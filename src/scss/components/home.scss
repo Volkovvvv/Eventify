@@ -1,0 +1,203 @@
+body {
+  background: linear-gradient(#222bee, #131988);
+  background-repeat: no-repeat;
+  height: 1000px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  position: relative;
+}
+.telegram-icon {
+  position: absolute;
+  right: 50%;
+  top: 64%;
+}
+
+.container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.content-block {
+  display: flex;
+  justify-content: center;
+  margin-top: 90px;
+}
+
+.container-info {
+  margin-right: 30px;
+}
+
+.main-info {
+  display: flex;
+}
+
+.main-info__cart {
+  padding: 30px 0px 0px 30px;
+  border-radius: 40px;
+  background: #fff;
+  position: relative;
+  width: 300px;
+  cursor: pointer;
+  transform: rotate(-4deg);
+  transition: transform 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  height: 280px;
+  font-family: 'Arimo', sans-serif;
+  &.location {
+    transform: rotate(-4deg);
+    margin-right: 40px;
+  }
+  &.map {
+    transform: rotate(4deg);
+    transition: transform 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    &:hover {
+      transform: rotate(-4deg);
+    }
+  }
+  &:hover {
+    transform: rotate(5deg);
+  }
+  & h3 {
+    font-size: 40px;
+    font-weight: 300;
+  }
+  & p {
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: 200;
+    color: #4f4f79;
+    line-height: 0.8em;
+  }
+  & .heart-icon {
+    position: absolute;
+    top: auto;
+    right: 15px;
+    bottom: 7px;
+  }
+  & .map-icon {
+    position: absolute;
+    top: auto;
+    right: 5px;
+    bottom: 0;
+  }
+}
+
+.bottom-info__recommendation {
+  width: 680px;
+  position: relative;
+  background-color: #fff;
+  font-family: 'Arimo', sans-serif;
+  border-radius: 80px 300px 300px 80px;
+  padding: 30px 0 30px 50px;
+  margin-top: 50px;
+  transform: rotate(-4deg);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  &:hover {
+    transform: rotate(-7deg);
+  }
+  & h3 {
+    font-size: 40px;
+    font-weight: 300;
+  }
+  & p {
+    margin-top: 10px;
+    font-size: 30px;
+    width: 430px;
+    font-weight: 200;
+    color: #4f4f79;
+    line-height: 0.8em;
+  }
+  & .arrow-icon {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+}
+
+.right-info {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #000;
+  border-radius: 40px;
+  transform: rotate(4deg);
+  transition: transform 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  padding: 65px 90px 80px 90px;
+  cursor: pointer;
+  &:hover {
+    transform: rotate(-4deg);
+  }
+  &__content {
+    & h1 {
+      font-size: 120px;
+      position: relative;
+      color: #fff;
+      font-weight: 900;
+      letter-spacing: -7px;
+      position: relative;
+
+      &::before {
+        content: 'EVENTIFY';
+        font-size: 25px;
+        letter-spacing: -0px;
+        background: #f3633d;
+        border-radius: 30px;
+        padding: 15px 20px;
+        position: absolute;
+        transform: rotate(-20deg);
+        left: -15%;
+        top: -10%;
+      }
+    }
+    & p {
+      color: #fff;
+      font-size: 38px;
+      letter-spacing: -2px;
+      font-weight: 400;
+      text-align: center;
+    }
+    &-markers {
+      margin-top: 80px;
+      display: flex;
+      justify-content: space-between;
+      &__music {
+        transform: rotate(-4deg);
+        display: flex;
+        width: 115px;
+        height: 110px;
+        border-radius: 15px;
+        background: #fedd2c;
+        & img {
+          margin: auto;
+        }
+      }
+      &__draw {
+        display: flex;
+
+        border-radius: 15px;
+        transform: rotate(4deg);
+        width: 115px;
+        height: 110px;
+        background: #0177ff;
+        img {
+          margin: auto;
+        }
+      }
+      &__coffee {
+        display: flex;
+        border-radius: 15px;
+        width: 115px;
+        transform: rotate(-2deg);
+        height: 110px;
+        background: #fc3f1d;
+        img {
+          margin: auto;
+          width: 63px;
+          height: 76px;
+        }
+      }
+    }
+  }
+}
