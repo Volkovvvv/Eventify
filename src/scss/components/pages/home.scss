@@ -1,7 +1,7 @@
 body {
   background: linear-gradient(#222bee, #131988);
   background-repeat: no-repeat;
-  height: 1000px;
+  height: 100vh;
 }
 
 .logo {
@@ -63,6 +63,7 @@ body {
   & h3 {
     font-size: 40px;
     font-weight: 300;
+    color: #000;
   }
   & p {
     margin-top: 10px;

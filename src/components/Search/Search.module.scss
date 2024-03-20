@@ -1,0 +1,30 @@
+.search {
+  width: 65%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  & img {
+    position: absolute;
+    z-index: 1;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  & input {
+    border: none;
+    background-color: #fff;
+    border-radius: 15px;
+    width: 100%;
+    padding-left: 70px;
+    height: 70px;
+    &::placeholder {
+      font-size: 17px;
+      color: #8581a2;
+      font-family: 'Montserrat', sans-serif;
+    }
+    &:focus {
+      border: 1px solid #9b9b9b;
+    }
+  }
+}

@@ -7,6 +7,7 @@ import Arrow from '../assets/img/arrow.png';
 import Music from '../assets/img/Music.png';
 import Coffee from '../assets/img/Coffee.png';
 import Draw from '../assets/img/Draw.png';
+import { Link } from 'react-router-dom';
 
 export const Home: React.FC = () => {
   return (
@@ -22,11 +23,13 @@ export const Home: React.FC = () => {
       <div className="content-block">
         <div className="container-info">
           <div className="main-info">
-            <div className="main-info__cart location ">
-              <h3>ЛОКАЦИИ</h3>
-              <p>Лучшие места твоего города для отдыха</p>
-              <img className="heart-icon" src={Heart} alt="" />
-            </div>
+            <Link to="main">
+              <div className="main-info__cart location ">
+                <h3>ЛОКАЦИИ</h3>
+                <p>Лучшие места твоего города для отдыха</p>
+                <img className="heart-icon" src={Heart} alt="" />
+              </div>
+            </Link>
             <div className="main-info__cart map">
               <h3>КАРТА </h3>
               <p>Отмечайте на карте места, в которых вы побывали</p>
