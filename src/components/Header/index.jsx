@@ -11,36 +11,46 @@ import Bowling from '../../assets/img/Bowling';
 import Hookah from '../../assets/img/Hookah';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItemsSearch, setItemsActivity } from '../../redux/locations/slice';
+import { setCurrentPage } from '../../redux/pagination/slice';
 
 export const Header = () => {
   const dispath = useDispatch();
   const eatItems = useSelector((state) => state.locations.items);
 
   const onClickEat = () => {
-    dispath(setItemsSearch('минск рестораны'));
+    dispath(setItemsSearch('рестораны'));
     dispath(setItemsActivity('Покушать'));
+    dispath(setCurrentPage(1));
   };
   const onClickCinema = () => {
-    dispath(setItemsSearch('минск кино'));
+    dispath(setItemsSearch('кинотеатры'));
     dispath(setItemsActivity('Кино'));
+    dispath(setCurrentPage(1));
   };
   const onClickBowling = () => {
-    dispath(setItemsSearch('минск боулинг'));
+    dispath(setItemsSearch('боулинг'));
     dispath(setItemsActivity('Боулинг'));
+    dispath(setCurrentPage(1));
   };
   const onClickSport = () => {
-    dispath(setItemsSearch('минск спортзалы'));
+    dispath(setItemsSearch('спортзалы'));
     dispath(setItemsActivity('Спорт'));
+    dispath(setCurrentPage(1));
   };
   const onClickSauna = () => {
-    dispath(setItemsSearch('минск сауны'));
+    dispath(setItemsSearch('сауны'));
     dispath(setItemsActivity('Сауны'));
+    dispath(setCurrentPage(1));
   };
   const onClickAlco = () => {
-    dispath(setItemsSearch('минск бары'));
+    dispath(setItemsSearch('бары'));
+    dispath(setItemsActivity('Бары'));
+    dispath(setCurrentPage(1));
   };
   const onClickSmoke = () => {
-    dispath(setItemsSearch('минск кальянные'));
+    dispath(setItemsSearch('кафе с кальяном'));
+    dispath(setItemsActivity('Кальянные'));
+    dispath(setCurrentPage(1));
   };
   return (
     <header className={styles.header}>
@@ -53,19 +63,19 @@ export const Header = () => {
         </div>
 
         <div className={styles.headerButtons}>
-          <button className={styles.headerButton + ' ' + styles.eat}>
+          <button className={styles.headerButton}>
             <Burgersvg />
             <span onClick={onClickEat}>Покушать</span>
           </button>
-          <button className={styles.headerButton + ' ' + styles.cinema}>
+          <button className={styles.headerButton}>
             <Cinema />
             <span onClick={onClickCinema}>Кинотеатры</span>
           </button>
-          <button className={styles.headerButton + ' ' + styles.eat}>
+          <button className={styles.headerButton}>
             <Bowling />
             <span onClick={onClickBowling}>Боулинг</span>
           </button>
-          <button className={styles.headerButton + ' ' + styles.eat}>
+          <button className={styles.headerButton}>
             <Sport />
             <span onClick={onClickSport}>Спорт</span>
           </button>

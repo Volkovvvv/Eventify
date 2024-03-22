@@ -1,0 +1,34 @@
+.pagination {
+  text-align: center;
+  margin-top: 50px;
+  padding-bottom: 100px;
+
+  &Item {
+    background: transparent;
+    width: 65px;
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid #bdbdbd;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    margin-right: 20px;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 6px;
+    color: #bdbdbd;
+    cursor: pointer;
+  }
+}
+
+.back {
+  color: #000;
+}
+.forward {
+  color: #000;
+}
+.focused {
+  background-color: #185bc3;
+  border: none;
+  color: #fff;
+}
