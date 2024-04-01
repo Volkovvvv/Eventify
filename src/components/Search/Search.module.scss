@@ -3,7 +3,26 @@
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 20px;
+  display: flex;
   position: relative;
+  & input {
+    font-size: 20px;
+
+    font-family: 'Montserrat', sans-serif;
+  }
+  & svg {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 25px;
+    cursor: pointer;
+    opacity: 0.3;
+    &:hover {
+      opacity: 1;
+    }
+  }
   & img {
     position: absolute;
     z-index: 1;
@@ -20,6 +39,10 @@
     height: 70px;
     &::placeholder {
       font-size: 17px;
+      color: #8581a2;
+      font-family: 'Montserrat', sans-serif;
+    }
+    &::value {
       color: #8581a2;
       font-family: 'Montserrat', sans-serif;
     }

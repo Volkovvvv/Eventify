@@ -9,7 +9,7 @@ export const Pagination = () => {
   const [disabledBack, setDisabledBack] = React.useState(false);
   const [disabledForward, setDisabledForward] = React.useState(false);
   const totalLocations = useSelector((state) => state.pagination.totalLocations);
-  const paginationLenght = totalLocations / 9 > 5 ? 5 : totalLocations / 9;
+  const paginationLenght = totalLocations / 9 > 5 ? 5 : Math.ceil(totalLocations / 9);
 
   const setPage = (pageNumber) => {
     dispatch(setCurrentPage(pageNumber));
@@ -45,6 +45,7 @@ export const Pagination = () => {
           {'❮'}
         </button>
       )}
+
       {Array.from({ length: paginationLenght }, (_, index) => (
         <button
           onClick={() => setPage(index + 1)}
