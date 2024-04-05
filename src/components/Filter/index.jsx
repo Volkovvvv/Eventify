@@ -293,11 +293,7 @@ export const Filter = () => {
             </div>
           </button>
           <button>
-            <span>По среднему чеку</span>
-            <Arrow />
-          </button>
-          <button>
-            <span>По популярности</span>
+            <span>По моему местоположению</span>
             <Arrow />
           </button>
         </div>

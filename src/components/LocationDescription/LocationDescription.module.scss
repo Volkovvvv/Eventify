@@ -1,0 +1,140 @@
+.container {
+  width: 95%;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 auto;
+  & .back {
+    margin-top: 20px;
+    color: #a5a5a5;
+    display: flex;
+    align-items: center;
+    & span {
+      margin-right: 10px;
+    }
+  }
+  & .main {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    background-color: #4f528b;
+    padding: 20px 0;
+    border-radius: 20px;
+    &Container {
+      text-align: center;
+      & h2 {
+        font-size: 1.3vw;
+        color: #fff;
+        margin-top: 15px;
+
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+      &Descr {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-bottom: 30px;
+        & button {
+          background: #fff;
+          border-radius: 8px;
+          gap: 5px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          padding: 0.5vw 1vw;
+          & span {
+            font-size: 0.6vw;
+          }
+        }
+      }
+      &Like {
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 20px;
+        border-radius: 50%;
+        background-color: #d9d9d9;
+        margin: 10px auto;
+        transition: 0.5s;
+        position: relative;
+        &:hover {
+          background: #ffffff;
+          & svg {
+            fill: rgb(235, 58, 58);
+          }
+        }
+        & svg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          fill: rgb(163, 163, 163);
+          transform: translate(-50%, -50%);
+          transition: 0.5s;
+        }
+      }
+    }
+  }
+  & .favorites {
+    color: #fff;
+    margin-top: 10px;
+    font-size: 0.7vw;
+    font-weight: 400;
+  }
+
+  & .description {
+    margin-top: 20px;
+    margin-left: 5%;
+    background: #fff;
+    width: 30%;
+    border-radius: 5px;
+    &Info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 40px 40px;
+      &Left {
+        position: relative;
+        padding-right: 5px;
+        width: 50%;
+        & span {
+          color: #949494;
+          z-index: 10;
+          background-color: #fff;
+          &::before {
+            content: '';
+            margin-left: 10px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 0;
+            top: 1em;
+            margin-right: 15px;
+            border-top: 2px dotted rgba(0, 0, 0, 0.16);
+            background-color: #ffffff;
+          }
+        }
+      }
+      &Content {
+        display: flex;
+        justify-content: space-between;
+      }
+      &Right {
+        width: 50%;
+        & span {
+          color: black;
+        }
+      }
+      &Footer {
+        background-color: #fff;
+        text-align: center;
+        border-top: 1px solid #e7e7e7;
+        padding: 10px 0;
+        & span {
+          color: rgb(250, 103, 103);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

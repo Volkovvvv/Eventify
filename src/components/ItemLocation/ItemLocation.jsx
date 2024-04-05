@@ -2,23 +2,7 @@ import React from 'react';
 import Coin from '../../assets/img/Coin.png';
 import Star from '../../assets/img/Star.png';
 import style from './ItemLocation.module.scss';
-
-// type Obj2 = {
-//   address_comment: string;
-//   address_name: string;
-//   external_content: [];
-//   flags: {};
-//   id: string;
-//   name: string;
-//   reviews: {};
-//   rubrics: [];
-//   schedule: {};
-//   type: string;
-// };
-
-// type ItemLocationProps2 = {
-//   items: Obj2[];
-// };
+import { Link } from 'react-router-dom';
 
 export const ItemLocation = ({ items }) => {
   return (
