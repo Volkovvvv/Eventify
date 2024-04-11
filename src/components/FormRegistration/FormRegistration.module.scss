@@ -1,0 +1,104 @@
+.rightContentForm {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-bottom: 2vh !important;
+  gap: 2vh;
+  margin: 0 auto;
+  & div {
+    position: relative;
+    &:last-child {
+      & input {
+        margin-bottom: 0;
+      }
+      &::before {
+        content: '';
+        background: url('../../assets/img/Password.svg') no-repeat;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: inline-block;
+        width: 3vw;
+        height: 3vh;
+        position: absolute;
+        top: 0.5vh;
+        left: 0.4vw;
+      }
+    }
+    &:nth-child(3) {
+      &::before {
+        content: '';
+        background: url('../../assets/img/Email.svg') no-repeat;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: inline-block;
+        width: 3vw;
+        height: 3vh;
+        position: absolute;
+        top: 0.7vh;
+        left: 0.4vw;
+      }
+    }
+    &:nth-child(1) {
+      &::before {
+        content: '';
+        background: url('../../assets/img/Pen.svg') no-repeat;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: inline-block;
+        width: 3vw;
+        height: 3vh;
+        position: absolute;
+        top: 0.7vh;
+        left: 0.4vw;
+      }
+    }
+    &:nth-child(2) {
+      &::before {
+        content: '';
+        background: url('../../assets/img/Pen.svg') no-repeat;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: inline-block;
+        width: 3vw;
+        height: 3vh;
+        position: absolute;
+        top: 0.7vh;
+        left: 0.4vw;
+      }
+    }
+    & input {
+      width: 100%;
+      border: 1px solid #d0d0d0;
+      height: 5vh;
+      margin-bottom: 2vh;
+      font-size: 0.7vw;
+      color: #333333;
+      font-family: 'Montserrat', sans-serif;
+      padding-left: 1.8vw;
+      border-radius: 5px;
+      &::placeholder {
+        font-size: 0.6vw;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+      }
+    }
+  }
+}
+.registration {
+  background: #fff;
+  background: #3949ab;
+  margin-top: 100px;
+  width: 70%;
+  margin-top: 5vh;
+  margin: 0 auto;
+  cursor: pointer;
+  height: 5vh;
+  border-radius: 50px;
+  display: block;
+  border: 1px solid #3949ab;
+  & span {
+    color: #3949ab;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7vw;
+  }
+}

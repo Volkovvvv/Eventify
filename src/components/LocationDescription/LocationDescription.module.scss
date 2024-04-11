@@ -2,6 +2,10 @@
   width: 95%;
   font-family: 'Montserrat', sans-serif;
   margin: 0 auto;
+  & .wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
   & .back {
     margin-top: 20px;
     color: #a5a5a5;
@@ -12,7 +16,7 @@
     }
   }
   & .main {
-    width: 40%;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,9 +88,8 @@
 
   & .description {
     margin-top: 20px;
-    margin-left: 5%;
     background: #fff;
-    width: 30%;
+    width: 90%;
     border-radius: 5px;
     &Info {
       display: flex;
@@ -96,11 +99,12 @@
       &Left {
         position: relative;
         padding-right: 5px;
-        width: 50%;
+        width: 90%;
         & span {
           color: #949494;
           z-index: 10;
           background-color: #fff;
+
           &::before {
             content: '';
             margin-left: 10px;
@@ -123,6 +127,8 @@
         width: 50%;
         & span {
           color: black;
+          width: 100%;
+          font-size: 0.6vw;
         }
       }
       &Footer {
@@ -135,6 +141,94 @@
           cursor: pointer;
         }
       }
+    }
+  }
+  & .reviews {
+    background-color: #fff;
+    width: 90%;
+    margin-top: 20px;
+    padding: 20px 25px 0 20px;
+    border-radius: 5px;
+    &Header {
+      border-bottom: 1px solid #eeeeee;
+      display: flex;
+      align-items: center;
+      padding-bottom: 15px;
+      & span {
+        font-weight: 500;
+        font-size: 0.7vw;
+      }
+    }
+    &Item {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      &Date {
+        & span {
+          font-size: 0.5vw;
+          width: 70%;
+          color: #aaaaaa;
+        }
+      }
+      &Info {
+        width: 90%;
+        border-bottom: 1px solid #eeeeee;
+        padding-bottom: 10px;
+      }
+      &Title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        & span {
+          font-weight: 500;
+        }
+      }
+      &Description {
+        & span {
+          font-size: 0.55vw;
+        }
+      }
+    }
+  }
+  & .setReview {
+    background-color: #1b8dfb;
+    width: 90%;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 30px;
+    &Wrapper {
+      &Top {
+        display: flex;
+        margin-bottom: 20px;
+        align-items: center;
+        gap: 30px;
+        & span {
+          font-size: 0.9vw;
+          font-weight: 600;
+          color: #fff;
+        }
+      }
+      &Text {
+        & input {
+          padding: 80px 10px;
+          width: 100%;
+          border: none;
+          border-radius: 3px;
+          padding-top: 10px;
+          &::placeholder {
+            font-family: 'Montserrat', sans-serif;
+          }
+        }
+      }
+    }
+    & button {
+      border: none;
+      background: #fff;
+      font-family: 'Montserrat', sans-serif;
+      border-radius: 5px;
+      margin-top: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
     }
   }
 }

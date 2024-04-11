@@ -3,6 +3,10 @@ body {
   background-repeat: no-repeat;
   height: 100vh;
 }
+.logo-text {
+  width: 23vw;
+  height: 23vh;
+}
 
 .logo {
   display: flex;
@@ -12,10 +16,11 @@ body {
 }
 .telegram-icon {
   position: absolute;
-  right: 50%;
-  top: 64%;
+  right: 45%;
+  top: 62%;
+  width: 8vw;
+  height: 8vh;
 }
-
 .container {
   width: 50%;
   margin: 0 auto;

@@ -2,8 +2,8 @@ const Logo: React.FC = () => {
   return (
     <svg
       className="logo-text"
-      width="579"
-      height="145"
+      // width="579"
+      // height="145"
       viewBox="0 0 579 145"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

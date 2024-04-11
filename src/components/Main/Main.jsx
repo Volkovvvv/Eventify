@@ -15,25 +15,21 @@ export const Locations = () => {
   const currentPage = useSelector((state) => state.pagination.currentPage);
   const subwayLocation = useSelector((state) => state.filter.subway);
   const coordinates = useSelector((state) => state.filter.coordinates);
-  const prevSearchName = React.useRef('');
 
   React.useEffect(() => {
-    if (prevSearchName.current !== searchName) {
-      prevSearchName.current = searchName;
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(
-            `https://catalog.api.2gis.com/3.0/items?q=${search}&page=${currentPage}&page_size=9&sort_point=${coordinates}&subway=${subwayLocation}&fields=filters,items.external_content,items.links,food_service_average_check,items.attribute_groups,items.context,items.description,items.schedule,items.comment,items.reviews,items.rubrics,items.flags,items.delivery,rating&key=f92b8ff9-6acb-4ec6-b43a-99162354bec2`,
-          );
-          dispatch(setItemsDefault(response.data.result.items));
-          dispatch(setTotalLocations(response.data.result.total));
-          console.log(response.data.result.items);
-        } catch (error) {
-          console.error('Произошла ошибка при загрузке данных', error);
-        }
-      };
-      fetchData();
-    }
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://catalog.api.2gis.com/3.0/items?q=${search}&page=${currentPage}&page_size=9&sort_point=${coordinates}&subway=${subwayLocation}&fields=filters,items.external_content,items.links,food_service_average_check,items.attribute_groups,items.context,items.description,items.schedule,items.comment,items.reviews,items.rubrics,items.flags,items.delivery,rating&key=f92b8ff9-6acb-4ec6-b43a-99162354bec2`,
+        );
+        dispatch(setItemsDefault(response.data.result.items));
+        dispatch(setTotalLocations(response.data.result.total));
+        console.log(response.data.result.items);
+      } catch (error) {
+        console.error('Произошла ошибка при загрузке данных', error);
+      }
+    };
+    fetchData();
   }, [searchName, currentPage, coordinates, subwayLocation]);
 
   return (
