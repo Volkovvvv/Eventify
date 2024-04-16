@@ -10,11 +10,15 @@ import Draw from '../assets/img/Draw.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/use-auth';
 import { useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 export const Home = () => {
+  const auth = getAuth();
   const navigate = useNavigate();
-  const { isAuth, email, name } = useAuth();
-  return isAuth ? (
+  const { isAuth, name } = useAuth();
+  console.log(isAuth);
+
+  return (
     <div className="container">
       <div className="logo">
         <a className="logo-text">
@@ -69,8 +73,6 @@ export const Home = () => {
         </div>
       </div>
     </div>
-  ) : (
-    navigate('/login')
   );
 };
 

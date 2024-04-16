@@ -5,30 +5,32 @@ import Astronaut from '../assets/img/Astronaut';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getDatabase, ref, set, push, get } from 'firebase/database';
+
 import { setUser } from '../redux/user/slice';
 import FormRegistration from '../components/FormRegistration';
 import { useNavigate } from 'react-router-dom';
+import app from '../firebase';
 
 export const Registration = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleRegister = (e, email, password, name, surname) => {
+  const db = getDatabase(app);
+  const handleRegister = async (e, email, password, name, surname) => {
     e.preventDefault();
-    const auth = getAuth();
+    const auth = getAuth(app);
+
     createUserWithEmailAndPassword(auth, email, password, name, surname)
       .then(({ user }) => {
-        console.log(user);
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.id,
-            token: user.accessToken,
-            name: name,
-            surname: surname,
-          }),
-          alert('Вы успешно зарегистрированы!'),
-          navigate('/login'),
-        );
+        const newDocRef = push(ref(db, 'users/user1'));
+        set(newDocRef, {
+          userName: name,
+          userSurname: surname,
+          userEmail: email,
+        }).then(() => {
+          alert('Вы успешно зарегистрированы');
+          navigate('/login');
+        });
       })
       .catch(console.error);
   };

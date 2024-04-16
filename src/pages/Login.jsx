@@ -6,28 +6,50 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/user/slice';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getDatabase, ref, get } from 'firebase/database';
 import FormRegistration from '../components/FormRegistration';
 import { useNavigate } from 'react-router-dom';
+import app from '../firebase';
+import { fetchUser } from '../redux/user/slice';
 
 export const Login = () => {
+  const fetchUser = async (email) => {
+    const db = getDatabase(app);
+    const dbRef = ref(db, 'users/user1');
+    await get(dbRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const allUsers = Object.values(snapshot.val());
+          const user = allUsers.find((user, i) => user.userEmail == email);
+          if (user) {
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            console.log(currentUser);
+            dispatch(setUser(currentUser));
+          } else {
+            console.log('Такого юзера нет');
+          }
+        } else {
+          alert('error');
+        }
+      })
+      .catch((error) => {
+        console.error('Ошибка чтения данных пользователя:', error);
+      });
+  };
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleLogin = (e, email, password, name, surname) => {
+
+  const handleLogin = async (e, email, password, name, surname) => {
     e.preventDefault();
     const auth = getAuth();
+
     signInWithEmailAndPassword(auth, email, password, name, surname)
       .then(({ user }) => {
         console.log(user);
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.id,
-            token: user.accessToken,
-            name: name,
-            surname: surname,
-          }),
-          navigate('/'),
-        );
+        fetchUser(email);
+        navigate('/');
       })
       .catch(() => alert('Введены неверные данные!'));
   };
@@ -67,6 +89,7 @@ export const Login = () => {
           </div>
         </div>
       </div>
+      <div></div>
     </div>
   );
 };

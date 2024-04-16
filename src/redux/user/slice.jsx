@@ -1,11 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 
 const initialState = {
-  email: null,
-  name: null,
-  surname: null,
-  id: null,
-  token: null,
+  currentUser: localStorage.getItem('currentUser') || null,
 };
 
 const userSlice = createSlice({
@@ -13,18 +10,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser(state, action) {
-      state.email = action.payload.email;
-      state.name = action.payload.name;
-      state.surname = action.payload.surname;
-      state.id = action.payload.null;
-      state.token = action.payload.token;
-    },
-    deleteUser(state) {
-      state.email = null;
-      state.name = null;
-      state.id = null;
-      state.token = null;
-      state.surname = null;
+      state.currentUser = action.payload;
     },
   },
 });

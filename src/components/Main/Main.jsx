@@ -24,7 +24,6 @@ export const Locations = () => {
         );
         dispatch(setItemsDefault(response.data.result.items));
         dispatch(setTotalLocations(response.data.result.total));
-        console.log(response.data.result.items);
       } catch (error) {
         console.error('Произошла ошибка при загрузке данных', error);
       }
