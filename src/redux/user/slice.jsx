@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+import loadCurrentUserFromLC from '../../utils/loadCurrentUserFromLC';
 
 const initialState = {
-  currentUser: localStorage.getItem('currentUser') || null,
+  currentUser: loadCurrentUserFromLC(),
 };
 
 const userSlice = createSlice({

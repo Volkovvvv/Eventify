@@ -5,23 +5,20 @@ import ArrowLeft from '../../assets/img/arrow-left.png';
 import Location from '../../assets/img/Location.png';
 import Time from '../../assets/img/Time.png';
 import axios from 'axios';
-import { Rating } from 'react-simple-star-rating';
-import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
+import Reviews from '../Reviews/index';
+import FormReview from '../FormReview';
 
 export const LocationDescription = () => {
   const [location, setLocation] = React.useState();
-  const [rating, setRating] = React.useState(0);
   const { id } = useParams();
   const attributes = location?.[0]?.attribute_groups;
-
-  // Optinal callback functions
 
   React.useEffect(() => {
     async function fetchLocations() {
       try {
         const { data } = await axios.get(
-          `https://catalog.api.2gis.com/3.0/items/byid?id=${id}&fields=filters,items.external_content,items.point,items.links,food_service_average_check,items.attribute_groups,items.context,items.description,items.schedule,items.comment,items.reviews,items.rubrics,items.flags,items.delivery,rating&key=f92b8ff9-6acb-4ec6-b43a-99162354bec2`,
+          `https://catalog.api.2gis.com/3.0/items/byid?id=${id}&fields=filters,items.external_content,items.point,items.links,food_service_average_check,items.attribute_groups,items.context,items.description,items.schedule,items.comment,items.reviews,items.rubrics,items.flags,items.delivery,rating&key=cbff09e3-eace-4237-a0dd-32bae3da2939`,
         );
 
         setLocation(data.result.items);
@@ -99,80 +96,8 @@ export const LocationDescription = () => {
               <span>Подробнее</span>
             </div>
           </div>
-          <div className={styles.reviews}>
-            <div className={styles.reviewsHeader}>
-              <span>Отзывы: 2</span>
-            </div>
-            <div className={styles.reviewsItem}>
-              <div className={styles.reviewsItemDate}>
-                <span>02 апреля 2024</span>
-              </div>
-              <div className={styles.reviewsItemInfo}>
-                <div className={styles.reviewsItemTitle}>
-                  <span>Владислав</span>
-                  <Rating size="20px" />
-                </div>
-                <div className={styles.reviewsItemDescription}>
-                  <span>
-                    Gym24 Белая Вежа "АБЫ ЧТО» сходил 3 раза и больше ни ногой. У меня был абонемент
-                    «Легкий старт» - зря потраченные деньги, описание не соответствует!
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className={styles.reviewsItem}>
-              <div className={styles.reviewsItemDate}>
-                <span>02 апреля 2024</span>
-              </div>
-              <div className={styles.reviewsItemInfo}>
-                <div className={styles.reviewsItemTitle}>
-                  <span>Владислав</span>
-                  <Rating size="20px" />
-                </div>
-                <div className={styles.reviewsItemDescription}>
-                  <span>
-                    Gym24 Белая Вежа "АБЫ ЧТО» сходил 3 раза и больше ни ногой. У меня был абонемент
-                    «Легкий старт» - зря потраченные деньги, описание не соответствует!
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className={styles.reviewsItem}>
-              <div className={styles.reviewsItemDate}>
-                <span>02 апреля 2024</span>
-              </div>
-              <div className={styles.reviewsItemInfo}>
-                <div className={styles.reviewsItemTitle}>
-                  <span>Владислав</span>
-                  <Rating size="20px" />
-                </div>
-                <div className={styles.reviewsItemDescription}>
-                  <span>
-                    Gym24 Белая Вежа "АБЫ ЧТО» сходил 3 раза и больше ни ногой. У меня был абонемент
-                    «Легкий старт» - зря потраченные деньги, описание не соответствует!
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className={styles.descriptionInfoFooter}>
-              <span>Подробнее</span>
-            </div>
-          </div>
-          <div className={styles.setReview}>
-            <div className={styles.setReviewWrapper}>
-              <div className={styles.setReviewWrapperTop}>
-                <span>
-                  Поделиться
-                  <br /> мнением
-                </span>
-                <Rating size="40px" />
-              </div>
-              <div className={styles.setReviewWrapperText}>
-                <input placeholder="Напишите отзыв..." type="text" />
-              </div>
-              <button className={styles.setReviewWrapperSend}>Написать отзыв</button>
-            </div>
-          </div>
+          <Reviews />
+          <FormReview />
         </div>
         <div className={styles.RightInfo}>
           <YMaps>

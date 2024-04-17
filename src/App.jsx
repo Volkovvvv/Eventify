@@ -6,6 +6,7 @@ import MainPage from './pages/MainPage';
 import LocationPage from './pages/LocationPage';
 import Registration from './pages/Registration';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/location/:id" element={<LocationPage />} />
       <Route path="/registration" element={<Registration />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }

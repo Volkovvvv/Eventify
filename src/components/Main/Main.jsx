@@ -20,7 +20,7 @@ export const Locations = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://catalog.api.2gis.com/3.0/items?q=${search}&page=${currentPage}&page_size=9&sort_point=${coordinates}&subway=${subwayLocation}&fields=filters,items.external_content,items.links,food_service_average_check,items.attribute_groups,items.context,items.description,items.schedule,items.comment,items.reviews,items.rubrics,items.flags,items.delivery,rating&key=f92b8ff9-6acb-4ec6-b43a-99162354bec2`,
+          `https://catalog.api.2gis.com/3.0/items?q=${search}&page=${currentPage}&page_size=9&sort_point=${coordinates}&subway=${subwayLocation}&fields=filters,items.external_content,items.links,food_service_average_check,items.attribute_groups,items.context,items.description,items.schedule,items.comment,items.reviews,items.rubrics,items.flags,items.delivery,rating&key=cbff09e3-eace-4237-a0dd-32bae3da2939`,
         );
         dispatch(setItemsDefault(response.data.result.items));
         dispatch(setTotalLocations(response.data.result.total));

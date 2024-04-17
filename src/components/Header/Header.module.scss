@@ -14,6 +14,44 @@
     display: flex;
     align-items: center;
   }
+  &Account {
+    cursor: pointer;
+    display: flex;
+    &Profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 1.5vw;
+      svg {
+        stroke: #8b8b8b;
+      }
+      &:hover {
+        svg path:nth-child(2) {
+          transition: all 0.5s;
+          stroke: rgb(93, 78, 179);
+        }
+        span {
+          transition: all 0.5s;
+          color: rgb(93, 78, 179);
+        }
+        svg path:nth-child(1) {
+          transition: all 0.5s;
+          stroke: rgb(93, 78, 179);
+        }
+      }
+    }
+    &Exit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &:hover {
+        span {
+          transition: all 0.5s;
+          color: rgb(179, 78, 108);
+        }
+      }
+    }
+  }
 }
 
 .headerLogo {
@@ -34,6 +72,7 @@
 }
 .headerButtons {
   display: flex;
+  margin-right: 1vw;
 }
 .headerButton {
   font-family: 'Montserrat', sans-serif;

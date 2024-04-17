@@ -1,0 +1,41 @@
+.setReview {
+  background-color: #1b8dfb;
+  width: 90%;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 30px;
+  &Wrapper {
+    &Top {
+      display: flex;
+      margin-bottom: 20px;
+      align-items: center;
+      gap: 30px;
+      & span {
+        font-size: 0.9vw;
+        font-weight: 600;
+        color: #fff;
+      }
+    }
+    &Text {
+      & input {
+        padding: 80px 10px;
+        width: 100%;
+        border: none;
+        border-radius: 3px;
+        padding-top: 10px;
+        &::placeholder {
+          font-family: 'Montserrat', sans-serif;
+        }
+      }
+    }
+  }
+  & button {
+    border: none;
+    background: #fff;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+}

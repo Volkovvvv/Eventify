@@ -9,9 +9,12 @@ import Alco from '../../assets/img/Alco';
 import Burgersvg from '../../assets/img/Burgersvg';
 import Bowling from '../../assets/img/Bowling';
 import Hookah from '../../assets/img/Hookah';
+import Exit from '../../assets/img/Exit';
+import Profile from '../../assets/img/Profile';
 import { useDispatch, useSelector } from 'react-redux';
 import { setItemsSearch, setItemsActivity } from '../../redux/locations/slice';
 import { setCurrentPage } from '../../redux/pagination/slice';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const dispath = useDispatch();
@@ -99,6 +102,20 @@ export const Header = () => {
             <Hookah />
             <span onClick={onClickSmoke}>Кальянные</span>
           </button>
+        </div>
+        <div className={styles.headerAccount}>
+          <Link to="/profile">
+            <div className={styles.headerAccountProfile}>
+              <Profile />
+              <span>Мой профиль</span>
+            </div>
+          </Link>
+          <Link to="/login">
+            <div className={styles.headerAccountExit}>
+              <Exit />
+              <span>Выход</span>
+            </div>
+          </Link>
         </div>
       </div>
     </header>
