@@ -5,16 +5,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 export const Reviews = () => {
-  // const today = new Date();
-  // const year = today.getFullYear();
-  // const month = String(today.getMonth() + 1).padStart(2, '0');
-  // const day = String(today.getDate()).padStart(2, '0');
-  // const formattedDate = `${year}-${month}-${day}`;
-  // console.log(formattedDate);
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const day = String(today.getDate()).padStart(2, '0');
+  const date = new Date(0, month - 1);
+  const monthName = date.toLocaleString('default', { month: 'long' });
+
+  let modifiedMonthName;
+  if (monthName !== 'март' || monthName !== 'август') {
+    modifiedMonthName = monthName.slice(0, -1) + 'я';
+  } else {
+    modifiedMonthName = monthName + 'а';
+  }
+
   const { id } = useParams();
   const reviewState = useSelector((state) => state.reviews.locationReview);
   const reviewsArray = reviewState[id] ? Object.values(reviewState[id]) : null;
-  console.log(reviewState[id], 'это ревьюстейт');
 
   return (
     <div className={styles.reviews}>
@@ -29,12 +36,14 @@ export const Reviews = () => {
               {' '}
               <div className={styles.reviewsItem}>
                 <div className={styles.reviewsItemDate}>
-                  <span>02 апреля 2024</span>
+                  <span>
+                    {day} {modifiedMonthName} {year}
+                  </span>
                 </div>
                 <div className={styles.reviewsItemInfo}>
                   <div className={styles.reviewsItemTitle}>
                     <span>{item.name}</span>
-                    <Rating size="25px" />
+                    <Rating readonly="true" initialValue={item.rating} size="25px" />
                   </div>
                   <div className={styles.reviewsItemDescription}>
                     <span>{item.comment}</span>

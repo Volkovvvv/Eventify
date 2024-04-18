@@ -1,5 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
+import { createSlice } from '@reduxjs/toolkit';
 import loadCurrentUserFromLC from '../../utils/loadCurrentUserFromLC';
 
 const initialState = {

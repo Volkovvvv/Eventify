@@ -10,7 +10,6 @@ import { getDatabase, ref, get } from 'firebase/database';
 import FormRegistration from '../components/FormRegistration';
 import { useNavigate } from 'react-router-dom';
 import app from '../firebase';
-import { fetchUser } from '../redux/user/slice';
 
 export const Login = () => {
   const fetchUser = async (email) => {
@@ -24,7 +23,6 @@ export const Login = () => {
           if (user) {
             localStorage.setItem('currentUser', JSON.stringify(user));
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            console.log(currentUser);
             dispatch(setUser(currentUser));
           } else {
             console.log('Такого юзера нет');

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import loadCurrentReviewFromLC from '../../utils/loadCurrentReviewFromLC';
 
 const initialState = {
   locationReview: [],
@@ -9,9 +10,10 @@ const reviewsSlice = createSlice({
   initialState,
   reducers: {
     setReview(state, action) {
-      const { id, comment, name } = action.payload;
+      console.log(state.locationReview);
+      const { id, comment, name, rating, email } = action.payload;
       const reviews = state.locationReview[id] || [];
-      const updatedReviews = reviews.concat({ comment, name });
+      const updatedReviews = reviews.concat({ comment, name, rating, email });
       return {
         ...state,
         locationReview: {
