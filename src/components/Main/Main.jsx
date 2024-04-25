@@ -6,6 +6,7 @@ import ItemLocation from '../ItemLocation/ItemLocation';
 import { setItemsDefault } from '../../redux/locations/slice';
 import { setTotalLocations } from '../../redux/pagination/slice';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/use-auth';
 
 export const Locations = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ export const Locations = () => {
     };
     fetchData();
   }, [searchName, currentPage, coordinates, subwayLocation]);
-
+  useAuth();
   return (
     <main className={style.locations}>
       {search === 'минск ' ? (

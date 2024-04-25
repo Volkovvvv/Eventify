@@ -2,7 +2,7 @@ import React from 'react';
 
 const loadCurrentUserFromLC = () => {
   try {
-    const currentUser = localStorage.getItem('currentUser');
+    const currentUser = sessionStorage.getItem('currentUser');
     if (currentUser) {
       return JSON.parse(currentUser);
     }

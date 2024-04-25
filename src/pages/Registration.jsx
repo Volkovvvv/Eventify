@@ -13,7 +13,6 @@ import { useNavigate } from 'react-router-dom';
 import app from '../firebase';
 
 export const Registration = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const db = getDatabase(app);
   const handleRegister = async (e, email, password, name, surname) => {

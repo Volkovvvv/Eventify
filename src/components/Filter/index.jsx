@@ -180,6 +180,8 @@ export const Filter = () => {
       checked: false,
     },
   ]);
+  const searchValue = useSelector((state) => state.locations.search);
+  const upperSearchValue = searchValue.charAt(0).toUpperCase() + searchValue.slice(1);
 
   const showDropdownRating = () => {
     setActiveRating(!activeRating);
@@ -230,7 +232,7 @@ export const Filter = () => {
     <div className="filter">
       <div className="filterWrapper">
         <div className="filterWrapperInfo">
-          <h3>{activityName}</h3>
+          <h3>{upperSearchValue ? upperSearchValue : 'Ничего не найдено'}</h3>
           <p>Найдено: {totalLocations > 45 ? 45 : totalLocations}</p>
         </div>
         <div className="filterWrapperCategories">

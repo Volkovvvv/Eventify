@@ -3,15 +3,17 @@ import styles from '../scss/components/pages/Registration.module.scss';
 import Logo from '../assets/img/Logo';
 import Astronaut from '../assets/img/Astronaut';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../redux/user/slice';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { getDatabase, ref, get } from 'firebase/database';
 import FormRegistration from '../components/FormRegistration';
 import { useNavigate } from 'react-router-dom';
 import app from '../firebase';
+import { useAuth } from '../hooks/use-auth';
 
 export const Login = () => {
+  const { dataUser } = useAuth();
   const fetchUser = async (email) => {
     const db = getDatabase(app);
     const dbRef = ref(db, 'users/user1');
@@ -19,10 +21,10 @@ export const Login = () => {
       .then((snapshot) => {
         if (snapshot.exists()) {
           const allUsers = Object.values(snapshot.val());
-          const user = allUsers.find((user, i) => user.userEmail == email);
+          const user = allUsers.find((user) => user.userEmail == email);
           if (user) {
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            sessionStorage.setItem('currentUser', JSON.stringify(user));
+            const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
             dispatch(setUser(currentUser));
           } else {
             console.log('Такого юзера нет');
@@ -35,7 +37,7 @@ export const Login = () => {
         console.error('Ошибка чтения данных пользователя:', error);
       });
   };
-
+  console.log(dataUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -44,9 +46,8 @@ export const Login = () => {
     const auth = getAuth();
 
     signInWithEmailAndPassword(auth, email, password, name, surname)
-      .then(({ user }) => {
-        console.log(user);
-        fetchUser(email);
+      .then(async ({ user }) => {
+        await fetchUser(email);
         navigate('/');
       })
       .catch(() => alert('Введены неверные данные!'));

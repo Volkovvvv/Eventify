@@ -50,7 +50,7 @@ export const LocationDescription = () => {
               <div className={styles.mainContainerDescr}>
                 <button>
                   <img src={Location} alt="" />
-                  <span>Минск, Чюрлениса 1</span>
+                  <span>{location[0].address_name}</span>
                 </button>
                 <button>
                   <img src={Time} alt="" />

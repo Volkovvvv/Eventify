@@ -4,6 +4,7 @@ import styles from './FormReview.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { setReview } from '../../redux/reviews/slice';
 import { useParams } from 'react-router-dom';
+import loadCurrentReviewFromLC from '../../utils/loadCurrentReviewFromLC';
 
 export const FormReview = () => {
   const dispatch = useDispatch();
@@ -11,9 +12,16 @@ export const FormReview = () => {
   const currentName = useSelector((state) => state.user.currentUser.userName);
   const currentEmail = useSelector((state) => state.user.currentUser.userEmail);
   const reviewState = useSelector((state) => state.reviews.locationReview);
-  console.log(reviewState, 'cтейт');
   const reviewsArray = reviewState[id] ? Object.values(reviewState[id]) : null;
   let isReview = false;
+
+  React.useEffect(() => {
+    const currentSavedReview = loadCurrentReviewFromLC();
+    if (currentSavedReview) {
+      setCurrentReview(currentSavedReview.comment);
+      setRating(currentSavedReview.rating);
+    }
+  }, []);
 
   reviewsArray
     ? reviewState[id].map((item) => {
@@ -24,7 +32,7 @@ export const FormReview = () => {
     : console.log('отзывов нет');
 
   const [review, setCurrentReview] = React.useState('');
-  const [rating, setRating] = React.useState('');
+  const [rating, setRating] = React.useState();
 
   const onInput = (e) => {
     setCurrentReview(e.target.value);
@@ -49,7 +57,15 @@ export const FormReview = () => {
   React.useEffect(() => {});
 
   const onSubmit = () => {
-    isReview ? alert('Вы уже оставили комментарий') : dispatch(setReview(currentSavedReview));
+    if (isReview) {
+      alert('Вы уже оставили комментарий');
+    } else if (!rating) {
+      alert('Поставьте пожалуйста оценку');
+    } else if (!review) {
+      alert('Напишите пожалуйста комментарий');
+    } else {
+      dispatch(setReview(currentSavedReview));
+    }
   };
 
   return (
