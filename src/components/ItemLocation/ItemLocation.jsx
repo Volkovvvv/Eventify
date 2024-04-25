@@ -2,7 +2,6 @@ import React from 'react';
 import Coin from '../../assets/img/Coin.png';
 import Star from '../../assets/img/Star.png';
 import style from './ItemLocation.module.scss';
-import { Link } from 'react-router-dom';
 
 export const ItemLocation = ({ items }) => {
   return (

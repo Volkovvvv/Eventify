@@ -18,7 +18,7 @@ export const LocationDescription = () => {
     async function fetchLocations() {
       try {
         const { data } = await axios.get(
-          `https://catalog.api.2gis.com/3.0/items/byid?id=${id}&fields=filters,items.external_content,items.point,items.links,food_service_average_check,items.attribute_groups,items.context,items.description,items.schedule,items.comment,items.reviews,items.rubrics,items.flags,items.delivery,rating&key=cbff09e3-eace-4237-a0dd-32bae3da2939`,
+          `https://catalog.api.2gis.com/3.0/items/byid?id=${id}&fields=filters,items.external_content,items.point,items.links,food_service_average_check,items.attribute_groups,items.context,items.description,items.schedule,items.comment,items.reviews,items.rubrics,items.flags,items.delivery,rating&key=6103a4ae-5b0d-4a52-92ad-9002c303b503`,
         );
 
         setLocation(data.result.items);

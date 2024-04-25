@@ -15,10 +15,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setItemsSearch, setItemsActivity } from '../../redux/locations/slice';
 import { setCurrentPage } from '../../redux/pagination/slice';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export const Header = () => {
   const dispath = useDispatch();
   const eatItems = useSelector((state) => state.locations.items);
+
+  const variants = {
+    hover: { scale: 1.05, transition: { duration: 0.3 } },
+  };
 
   const onClickEat = () => {
     dispath(setItemsSearch('рестораны'));
@@ -55,6 +60,10 @@ export const Header = () => {
     dispath(setItemsActivity('Кальянные'));
     dispath(setCurrentPage(1));
   };
+  const clearData = () => {
+    sessionStorage.removeItem('currentUser');
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.headerWrapper}>
@@ -66,42 +75,54 @@ export const Header = () => {
         </div>
 
         <div className={styles.headerButtons}>
-          <button className={styles.headerButton}>
+          <motion.button className={styles.headerButton} whileHover="hover" variants={variants}>
             <Burgersvg />
             <span onClick={onClickEat}>Покушать</span>
-          </button>
-          <button className={styles.headerButton}>
+          </motion.button>
+          <motion.button className={styles.headerButton} whileHover="hover" variants={variants}>
             <Cinema />
             <span onClick={onClickCinema}>Кинотеатры</span>
-          </button>
-          <button className={styles.headerButton}>
+          </motion.button>
+          <motion.button className={styles.headerButton} whileHover="hover" variants={variants}>
             <Bowling />
             <span onClick={onClickBowling}>Боулинг</span>
-          </button>
-          <button className={styles.headerButton}>
+          </motion.button>
+          <motion.button className={styles.headerButton} whileHover="hover" variants={variants}>
             <Sport />
             <span onClick={onClickSport}>Спорт</span>
-          </button>
-          <button className={styles.headerButton + ' ' + styles.eat}>
+          </motion.button>
+          <motion.button
+            className={styles.headerButton + ' ' + styles.eat}
+            whileHover="hover"
+            variants={variants}>
             <Sauna />
             <span onClick={onClickSauna}>Сауны</span>
-          </button>
-          <button className={styles.headerButton + ' ' + styles.eat}>
+          </motion.button>
+          <motion.button
+            className={styles.headerButton + ' ' + styles.eat}
+            whileHover="hover"
+            variants={variants}>
             <Leisure />
             <span>
               Активный
               <br />
               отдых
             </span>
-          </button>
-          <button className={styles.headerButton + ' ' + styles.eat}>
+          </motion.button>
+          <motion.button
+            className={styles.headerButton + ' ' + styles.eat}
+            whileHover="hover"
+            variants={variants}>
             <Alco />
             <span onClick={onClickAlco}>Выпить</span>
-          </button>
-          <button className={styles.headerButton + ' ' + styles.eat}>
+          </motion.button>
+          <motion.button
+            className={styles.headerButton + ' ' + styles.eat}
+            whileHover="hover"
+            variants={variants}>
             <Hookah />
             <span onClick={onClickSmoke}>Кальянные</span>
-          </button>
+          </motion.button>
         </div>
         <div className={styles.headerAccount}>
           <Link to="/profile">
@@ -110,7 +131,7 @@ export const Header = () => {
               <span>Мой профиль</span>
             </div>
           </Link>
-          <Link to="/login">
+          <Link onClick={clearData} to="/login">
             <div className={styles.headerAccountExit}>
               <Exit />
               <span>Выход</span>

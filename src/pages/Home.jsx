@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import Logo from '../assets/img/Logo';
 import Telegram from '../assets/img/Telegram';
 import Heart from '../assets/img/Heart.png';
@@ -10,7 +10,8 @@ import Draw from '../assets/img/Draw.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/use-auth';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import gsap from 'gsap';
+import { motion } from 'framer-motion';
 
 export const Home = () => {
   const { dataUser } = useAuth();
@@ -21,6 +22,15 @@ export const Home = () => {
       navigate('/login');
     }
   }, []);
+
+  useLayoutEffect(() => {
+    gsap.to('.logo', { rotation: 360, duration: 1 });
+  });
+
+  const variants = {
+    visible: { x: -1000, opacity: 0 },
+    hidden: { x: 0, opacity: 1 },
+  };
 
   return (
     <>
@@ -34,9 +44,14 @@ export const Home = () => {
               <Telegram />
             </a>
           </div>
-          <div className="content-block">
+          <motion.div
+            className="content-block"
+            initial="visible"
+            animate="hidden"
+            transition={{ delay: 0.5, ease: 'easeInOut', type: 'just' }}
+            variants={variants}>
             <div className="container-info">
-              <div className="main-info">
+              <motion.div className="main-info">
                 <Link to="main">
                   <div className="main-info__cart location ">
                     <h3>ЛОКАЦИИ</h3>
@@ -49,7 +64,7 @@ export const Home = () => {
                   <p>Отмечайте на карте места, в которых вы побывали</p>
                   <img className="map-icon" src={Map} alt="" />
                 </div>
-              </div>
+              </motion.div>
               <div className="bottom-info">
                 <div className="bottom-info__recommendation">
                   <h3>РЕКОМЕНДАЦИИ</h3>
@@ -77,7 +92,7 @@ export const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       ) : null}
     </>
