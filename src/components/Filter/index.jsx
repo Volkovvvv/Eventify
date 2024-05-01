@@ -3,6 +3,7 @@ import './Filter.scss';
 import Arrow from '../../assets/img/Arrow';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilterCoordinates, setFilterSubway } from '../../redux/filter/slice';
+import Modal from '../../components/Modal';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -197,16 +198,7 @@ export const Filter = () => {
     e.stopPropagation();
     setActiveMetroRed(!activeMetroRed);
   };
-  const onClickDecrease = (e) => {
-    e.stopPropagation();
-    setCheckedDecrease(true);
-    setCheckedIncrease(false);
-  };
-  const onClickIncrease = (e) => {
-    e.stopPropagation();
-    setCheckedDecrease(false);
-    setCheckedIncrease(true);
-  };
+
   const onClickMetro = (coordinates, subway, i) => {
     const newMetroBlueList = metroBlueList.map((item, index) => {
       if (index === i) {
@@ -215,11 +207,47 @@ export const Filter = () => {
         return { ...item, checked: false };
       }
     });
-    if (newMetroBlueList[i] == i && newMetroBlueList[i].checked == true) {
-      newMetroBlueList[i].checked = false;
-    }
+
+    const resetRed = metroRedList.map((item, index) => {
+      if (item.checked == true) {
+        console.log(item);
+        return { ...item, checked: !item.checked };
+      } else {
+        return { ...item, checked: false };
+      }
+    });
     setMetroBlueList(newMetroBlueList);
+    setMetroRedList(resetRed);
+
     if (newMetroBlueList[i].checked) {
+      dispatch(setFilterCoordinates(coordinates));
+      dispatch(setFilterSubway(subway));
+    } else {
+      dispatch(setFilterCoordinates(''));
+      dispatch(setFilterSubway(''));
+    }
+  };
+
+  const onClickRedMetro = (coordinates, subway, i) => {
+    const newMetroRedList = metroRedList.map((item, index) => {
+      if (index === i) {
+        return { ...item, checked: !item.checked };
+      } else {
+        return { ...item, checked: false };
+      }
+    });
+
+    const resetBlue = metroBlueList.map((item, index) => {
+      if (item.checked == true) {
+        console.log(item);
+        return { ...item, checked: !item.checked };
+      } else {
+        return { ...item, checked: false };
+      }
+    });
+    setMetroRedList(newMetroRedList);
+    setMetroBlueList(resetBlue);
+    if (newMetroRedList[i].checked) {
       dispatch(setFilterCoordinates(coordinates));
       dispatch(setFilterSubway(subway));
     } else {
@@ -236,20 +264,6 @@ export const Filter = () => {
           <p>Найдено: {totalLocations > 45 ? 45 : totalLocations}</p>
         </div>
         <div className="filterWrapperCategories">
-          <button onClick={() => showDropdownRating()}>
-            <span>По рейтингу</span>
-            <Arrow />
-            <div className={activeRating ? 'dropdownRating block' : 'dropdownRating'}>
-              <label onClick={(e) => onClickDecrease(e)}>
-                <input checked={checkedDecrease} type="checkbox" />
-                <span>По убыванию</span>
-              </label>
-              <label onClick={(e) => onClickIncrease(e)}>
-                <input checked={checkedIncrease} type="checkbox" />
-                <span>По возрастанию</span>
-              </label>
-            </div>
-          </button>
           <button onClick={() => showDropdownMetro()}>
             <span>Вблизи метро</span>
             <Arrow />
@@ -285,8 +299,12 @@ export const Filter = () => {
                 }>
                 {metroRedList.map((item, i) => {
                   return (
-                    <label index={i}>
-                      <input type="checkbox" />
+                    <label
+                      onChange={() => {
+                        onClickRedMetro(item.coordinates, item.subway, i);
+                      }}
+                      index={i}>
+                      <input checked={item.checked} type="checkbox" />
                       <span>{item.name}</span>
                     </label>
                   );

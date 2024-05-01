@@ -15,13 +15,13 @@ export const FormReview = () => {
   const reviewsArray = reviewState[id] ? Object.values(reviewState[id]) : null;
   let isReview = false;
 
-  React.useEffect(() => {
-    const currentSavedReview = loadCurrentReviewFromLC();
-    if (currentSavedReview) {
-      setCurrentReview(currentSavedReview.comment);
-      setRating(currentSavedReview.rating);
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   const currentSavedReview = loadCurrentReviewFromLC();
+  //   if (currentSavedReview) {
+  //     setCurrentReview(currentSavedReview.comment);
+  //     setRating(currentSavedReview.rating);
+  //   }
+  // }, []);
 
   reviewsArray
     ? reviewState[id].map((item) => {
@@ -42,29 +42,34 @@ export const FormReview = () => {
     setRating(rate);
   };
 
-  localStorage.setItem(
-    'currentReview',
-    JSON.stringify({
-      id: id,
-      comment: review,
-      name: currentName,
-      rating: rating,
-      email: currentEmail,
-    }),
-  );
+  // localStorage.setItem('currentReview', JSON.stringify());
 
-  const currentSavedReview = JSON.parse(localStorage.getItem('currentReview'));
+  // const currentSavedReview = JSON.parse(localStorage.getItem('currentReview'));
   React.useEffect(() => {});
 
   const onSubmit = () => {
     if (isReview) {
+      setCurrentReview('');
+      setRating('');
       alert('Вы уже оставили комментарий');
     } else if (!rating) {
+      setCurrentReview('');
       alert('Поставьте пожалуйста оценку');
     } else if (!review) {
+      setRating('');
       alert('Напишите пожалуйста комментарий');
     } else {
-      dispatch(setReview(currentSavedReview));
+      setCurrentReview('');
+      setRating('');
+      dispatch(
+        setReview({
+          id: id,
+          comment: review,
+          name: currentName,
+          rating: rating,
+          email: currentEmail,
+        }),
+      );
     }
   };
 

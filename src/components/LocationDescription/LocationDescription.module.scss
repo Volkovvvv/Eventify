@@ -5,6 +5,9 @@
   & .wrapper {
     display: flex;
     justify-content: space-between;
+    & .leftInfo {
+      width: 100%;
+    }
   }
   & .back {
     margin-top: 20px;

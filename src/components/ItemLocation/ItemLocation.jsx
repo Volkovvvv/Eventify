@@ -1,4 +1,5 @@
 import React from 'react';
+import MinskView from '../../assets/img/MinskView.jpg';
 import Coin from '../../assets/img/Coin.png';
 import Star from '../../assets/img/Star.png';
 import style from './ItemLocation.module.scss';
@@ -8,9 +9,13 @@ export const ItemLocation = ({ items }) => {
     <div className={style.locations}>
       <div className={style.locationsItem}>
         {items.external_content[0] ? (
-          <img className={style.locationsItemImg} src={items.external_content[0].main_photo_url} />
+          <img
+            className={style.locationsItemImg}
+            src={items.external_content[0].main_photo_url}
+            alt="фото локации"
+          />
         ) : (
-          'Фото не найдено'
+          <img width="500" height="300" src={MinskView}></img>
         )}
         <div className={style.locationsItemTop}>
           <div className={style.locationsItemMoney}>
@@ -22,8 +27,16 @@ export const ItemLocation = ({ items }) => {
               <img src={Star} alt="" />
             </div>
             <div className={style.locationsItemNumbers}>
-              <span>{items.reviews.general_rating}</span>
-              <p>{items.reviews.general_review_count - 1}+</p>
+              <span>
+                {items.reviews.general_rating ? (
+                  items.reviews.general_rating
+                ) : (
+                  <span className={style.noRating}>Нет оценок</span>
+                )}
+              </span>
+              <p>
+                {items.reviews.general_review_count ? items.reviews.general_review_count - 1 : null}
+              </p>
             </div>
           </div>
         </div>

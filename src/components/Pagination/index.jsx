@@ -6,6 +6,7 @@ import { setCurrentPage } from '../../redux/pagination/slice';
 export const Pagination = () => {
   const dispatch = useDispatch();
   let currentPage = useSelector((state) => state.pagination.currentPage);
+  const randomItems = useSelector((state) => state.locations.randomItems);
   const [disabledBack, setDisabledBack] = React.useState(false);
   const [disabledForward, setDisabledForward] = React.useState(false);
   const totalLocations = useSelector((state) => state.pagination.totalLocations);
@@ -35,17 +36,16 @@ export const Pagination = () => {
     setDisabledForward(false);
   }, [currentPage]);
 
-  return (
+  return !randomItems.length > 0 ? (
     <div className={styles.pagination}>
       {paginationLenght > 1 && (
         <button
           disabled={disabledBack}
           onClick={() => onClickBack(currentPage > 1 ? currentPage - 1 : 1)}
           className={styles.paginationItem + ' ' + styles.back}>
-          {'❮'}
+          <span>❮</span>
         </button>
       )}
-
       {Array.from({ length: paginationLenght }, (_, index) => (
         <button
           onClick={() => setPage(index + 1)}
@@ -54,7 +54,7 @@ export const Pagination = () => {
               ? styles.paginationItem + ' ' + styles.focused
               : styles.paginationItem + ''
           }>
-          {index + 1}
+          <span>{index + 1}</span>
         </button>
       ))}
       {paginationLenght > 1 && (
@@ -64,11 +64,11 @@ export const Pagination = () => {
             onClickForward(currentPage < paginationLenght ? currentPage + 1 : paginationLenght)
           }
           className={styles.paginationItem + ' ' + styles.forward}>
-          {'❯'}
+          <span>❯</span>
         </button>
       )}
     </div>
-  );
+  ) : null;
 };
 
 export default Pagination;

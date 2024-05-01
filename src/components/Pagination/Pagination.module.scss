@@ -18,6 +18,13 @@
     border-radius: 6px;
     color: #bdbdbd;
     cursor: pointer;
+    &:hover {
+      transition: 0.2s;
+      background-color: #185bc3;
+      & span {
+        color: #fff;
+      }
+    }
   }
 }
 

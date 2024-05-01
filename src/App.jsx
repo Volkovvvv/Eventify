@@ -7,6 +7,7 @@ import LocationPage from './pages/LocationPage';
 import Registration from './pages/Registration';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import Modal from './components/Modal';
 
 function App() {
   return (
