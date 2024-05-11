@@ -2,12 +2,16 @@ import React from 'react';
 import './Filter.scss';
 import Arrow from '../../assets/img/Arrow';
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilterCoordinates, setFilterSubway } from '../../redux/filter/slice';
-import Modal from '../../components/Modal';
+import {
+  setFilterCoordinates,
+  setFilterSubway,
+  setFilterSubwayName,
+} from '../../redux/filter/slice';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const activityName = useSelector((state) => state.locations.activityName);
+  const metro = useSelector((state) => state.filter.subwayName);
+  const random = useSelector((state) => state.locations.searchRandom);
   const totalLocations = useSelector((state) => state.pagination.totalLocations);
   const [activeRating, setActiveRating] = React.useState(false);
   const [activeMetro, setActiveMetro] = React.useState(false);
@@ -198,8 +202,22 @@ export const Filter = () => {
     e.stopPropagation();
     setActiveMetroRed(!activeMetroRed);
   };
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
 
-  const onClickMetro = (coordinates, subway, i) => {
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const randomItems = useSelector((state) => state.locations.randomItems);
+
+  const onClickMetro = (coordinates, subway, subwayName, i) => {
     const newMetroBlueList = metroBlueList.map((item, index) => {
       if (index === i) {
         return { ...item, checked: !item.checked };
@@ -216,15 +234,18 @@ export const Filter = () => {
         return { ...item, checked: false };
       }
     });
+
     setMetroBlueList(newMetroBlueList);
     setMetroRedList(resetRed);
 
     if (newMetroBlueList[i].checked) {
       dispatch(setFilterCoordinates(coordinates));
       dispatch(setFilterSubway(subway));
+      dispatch(setFilterSubwayName(subwayName));
     } else {
       dispatch(setFilterCoordinates(''));
       dispatch(setFilterSubway(''));
+      dispatch(setFilterSubwayName(''));
     }
   };
 
@@ -260,8 +281,41 @@ export const Filter = () => {
     <div className="filter">
       <div className="filterWrapper">
         <div className="filterWrapperInfo">
-          <h3>{upperSearchValue ? upperSearchValue : 'Ничего не найдено'}</h3>
-          <p>Найдено: {totalLocations > 45 ? 45 : totalLocations}</p>
+          {!random ? (
+            windowWidth > 1200 ? (
+              <h3>
+                {upperSearchValue && metro
+                  ? upperSearchValue + ` у метро ${metro}`
+                  : upperSearchValue
+                  ? upperSearchValue
+                  : 'Ничего не найдено'}
+              </h3>
+            ) : (
+              <>
+                <h3>{upperSearchValue ? upperSearchValue : 'Ничего не найдено'}</h3>
+                <p className="metroDescr">
+                  {' '}
+                  {upperSearchValue && metro ? ` у метро ${metro}` : null}
+                </p>
+              </>
+            )
+          ) : windowWidth > 1200 ? (
+            <h3>
+              {random && metro
+                ? random + ` у метро ${metro}`
+                : random
+                ? random
+                : 'Ничего не найдено'}
+            </h3>
+          ) : (
+            <>
+              <h3>{random ? random : 'Ничего не найдено'}</h3>
+              <p className="metroDescr"> {random && metro ? ` у метро ${metro}` : null}</p>
+            </>
+          )}
+          <p>
+            Найдено: {randomItems.length === 0 ? (totalLocations > 45 ? 45 : totalLocations) : '1'}
+          </p>
         </div>
         <div className="filterWrapperCategories">
           <button onClick={() => showDropdownMetro()}>
@@ -280,7 +334,7 @@ export const Filter = () => {
                   return (
                     <label
                       onChange={() => {
-                        onClickMetro(item.coordinates, item.subway, i);
+                        onClickMetro(item.coordinates, item.subway, item.name, i);
                       }}
                       index={i}>
                       <input checked={item.checked} type="checkbox" />
@@ -312,10 +366,10 @@ export const Filter = () => {
               </div>
             </div>
           </button>
-          <button>
+          {/* <button>
             <span>По моему местоположению</span>
             <Arrow />
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

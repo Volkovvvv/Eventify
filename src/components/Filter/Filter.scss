@@ -1,5 +1,5 @@
 .filter {
-  width: 65%;
+  width: 70%;
   margin: 0 auto;
   &Wrapper {
     display: flex;
@@ -65,12 +65,12 @@
           position: absolute;
           top: 60px;
           left: 0;
-
           display: none;
           z-index: 2;
           background-color: #fff;
           border-radius: 10px;
           width: 200px;
+
           padding-top: 15px;
           overflow: auto;
           padding-left: 15px;
@@ -81,7 +81,11 @@
             display: none;
           }
           .block {
+            height: 200px;
+            overflow-y: auto;
             display: block;
+            margin-top: 5px;
+            margin-bottom: 5px;
           }
           &-header {
             display: flex;
@@ -125,6 +129,66 @@
       }
       & p {
         font-size: 15px;
+      }
+    }
+  }
+}
+.metroDescr {
+  font-size: 15px !important;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+@media screen and (max-width: 2000px) {
+  .filter {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .filterWrapperCategories {
+    & button {
+      .dropdownMetro {
+        width: 170px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 470px) {
+  .filterWrapperCategories {
+    & button {
+      .dropdownMetro {
+        top: 80px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 410px) {
+  .filterWrapperCategories {
+    & button {
+      padding: 15px 10px;
+      .dropdownMetro {
+        width: 150px;
+      }
+      & span {
+        font-size: 13px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 350px) {
+  .filterWrapperInfo {
+    & h3 {
+      font-size: 22px;
+    }
+  }
+  .filterWrapperCategories {
+    & button {
+      padding: 15px 8px;
+      .dropdownMetro {
+        width: 140px;
+      }
+      & span {
+        font-size: 12px;
       }
     }
   }

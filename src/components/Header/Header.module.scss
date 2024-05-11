@@ -8,7 +8,7 @@
   width: 95%;
   background-color: #fff;
   border-radius: 33px;
-  padding: 30px 35px;
+  padding: 3vh 35px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   &Wrapper {
     display: flex;
@@ -22,6 +22,9 @@
       flex-direction: column;
       align-items: center;
       margin-right: 1.5vw;
+      & span {
+        font-size: 0.7vw;
+      }
       svg {
         stroke: #8b8b8b;
       }
@@ -44,6 +47,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      & span {
+        font-size: 0.7vw;
+        margin-top: 8px;
+      }
       &:hover {
         span {
           transition: all 0.5s;
@@ -66,41 +73,253 @@
     margin-right: 10px;
   }
   & span {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 600;
   }
 }
 .headerButtons {
   display: flex;
   margin-right: 1vw;
+  width: 69vw;
 }
 .headerButton {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  margin-right: 20px;
-  width: 200px;
-  height: 50px;
+  margin-right: 1vw;
+  width: 7.5vw;
+  height: 5.5vh;
   border-radius: 15px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 0.7vw;
   background: #fff;
   border: 1px solid #dad9e3;
   &:hover {
     background: #f5f4fb;
   }
-  & img {
-    margin-right: 10px;
-    width: 29px;
-    height: 29px;
-  }
-
   & span {
-    font-size: 18px;
+    font-size: 0.7vw;
   }
 }
 .burger {
   margin-right: 30px;
+}
+.back {
+  position: absolute;
+  background: none;
+  top: 15%;
+  right: 103%;
+}
+.leftArrow {
+  width: 35px;
+}
+.forward {
+  position: absolute;
+  background: none;
+  left: 98%;
+  top: 15%;
+}
+.rightArrow {
+  width: 35px;
+}
+
+.slider {
+  width: 850px;
+  height: 50px;
+  position: relative;
+}
+
+@media screen and (max-width: 2310px) {
+  .headerAccountProfile {
+    & span {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: 2000px) {
+  .header {
+    padding: 2vh 35px;
+  }
+  .headerButton {
+    width: 7.3vw;
+    height: 5vh;
+    gap: 0.3vw;
+    & span {
+      font-size: 0.75vw;
+    }
+  }
+}
+@media screen and (max-width: 1830px) {
+  .headerLogo {
+    margin-right: 35px;
+    & span {
+      font-size: 23px;
+    }
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  .headerButtons {
+    margin-left: 100px;
+  }
+  .headerButton {
+    width: 11vw;
+    margin-right: 0vw;
+    gap: 1vw;
+    & span {
+      font-size: 1vw;
+    }
+  }
+  .headerAccountProfile {
+    & span {
+      font-size: 1vw;
+    }
+  }
+  .headerAccountExit {
+    & span {
+      font-size: 1vw;
+    }
+  }
+}
+
+@media screen and (max-width: 1530px) {
+  .slider {
+    width: 750px;
+  }
+}
+@media screen and (max-width: 1410px) {
+  .slider {
+    width: 700px;
+  }
+  .headerButtons {
+    margin-left: 68px;
+  }
+}
+@media screen and (max-width: 1310px) {
+  .slider {
+    width: 630px;
+  }
+  .forward {
+    left: 100%;
+  }
+}
+
+@media screen and (max-width: 1230px) {
+  .slider {
+    width: 500px;
+  }
+  .headerButtons {
+    text-align: center;
+
+    .headerButton {
+      width: 150px;
+      & span {
+        font-size: 13px;
+      }
+    }
+  }
+  .forward {
+    left: 100%;
+  }
+  .headerAccountProfile {
+    & span {
+      font-size: 1.2vw;
+    }
+  }
+  .headerAccountExit {
+    & span {
+      font-size: 1.2vw;
+    }
+  }
+}
+@media screen and (max-width: 1100px) {
+  .slider {
+    width: 350px;
+  }
+  .forward {
+    left: 97%;
+  }
+  .headerAccountProfile {
+    & span {
+      font-size: 1.3vw;
+    }
+  }
+  .headerAccountExit {
+    & span {
+      font-size: 1.3vw;
+    }
+  }
+}
+
+.hamburgerMenu {
+  height: 100%;
+  display: none;
+  &Wrapper {
+    border-bottom: 5px solid bisque;
+    padding: 20px;
+    transition: all;
+    position: absolute;
+    z-index: 2;
+    flex: 1;
+    margin-top: 130px;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background: rgb(255, 255, 255);
+  }
+  &Elements {
+    gap: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    & button {
+      width: 200px;
+      margin-bottom: 10px;
+      & span {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 935px) {
+  .headerWrapper {
+    justify-content: space-around;
+  }
+  .hamburgerMenu {
+    display: block;
+  }
+  .headerButtons {
+    display: none;
+    z-index: 2;
+  }
+  .headerAccountProfile {
+    & span {
+      text-align: center;
+      font-size: 15px;
+      width: 100px;
+    }
+  }
+  .headerAccountExit {
+    & span {
+      font-size: 15px;
+    }
+  }
+}
+@media screen and (max-width: 670px) {
+  .headerAccountProfile {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .headerLogo {
+    & span {
+      font-size: 17px;
+    }
+  }
 }

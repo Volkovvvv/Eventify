@@ -4,12 +4,15 @@ import './Modal.scss';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { setRandomSearch } from '../../redux/locations/slice';
+import { setFilterSubway, setFilterSubwayName } from '../../redux/filter/slice';
 
 export const Modal = ({ active, onClose }) => {
   const dispatch = useDispatch();
+  const metro = useSelector((state) => state.filter.subway);
   const modalRootElement = document.querySelector('#modal');
   const element = document.createElement('div');
   const [choise, setChoise] = React.useState();
+
   React.useEffect(() => {
     modalRootElement.appendChild(element);
     return () => {
@@ -39,6 +42,8 @@ export const Modal = ({ active, onClose }) => {
   const onConfirm = () => {
     let namePlace = buttons[choise].name;
     dispatch(setRandomSearch(namePlace));
+    dispatch(setFilterSubway(''));
+    dispatch(setFilterSubwayName(''));
   };
 
   console.log(buttons);

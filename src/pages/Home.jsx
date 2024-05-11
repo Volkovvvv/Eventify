@@ -39,9 +39,9 @@ export const Home = () => {
           <div className="logo">
             <a className="logo-text">
               <Logo />
-            </a>
-            <a href="#">
-              <Telegram />
+              <a href="#">
+                <Telegram />
+              </a>
             </a>
           </div>
           <motion.div

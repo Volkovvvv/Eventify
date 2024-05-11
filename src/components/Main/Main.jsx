@@ -27,7 +27,7 @@ export const Locations = () => {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.5,
+        delay: i * 0.1,
       },
     }),
     hidden: { opacity: 0, y: 100 },
@@ -53,31 +53,30 @@ export const Locations = () => {
     fetchData();
   }, [searchName, currentPage, coordinates, subwayLocation, random]);
   useAuth();
+  const filterRandomItems = randomItems.filter(
+    (item, index) => !item.route_type && item.subtype !== 'city',
+  );
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
-    <main className={style.locations}>
+    <main style={randomItems.length > 0 ? { paddingTop: 20 } : null} className={style.locations}>
       {search === 'минск ' ? (
         <div>Нет информации</div>
       ) : randomItems.length === 0 ? (
         locationItems.map((i, index) =>
-          i.route_type ? null : (
-            <Link key={i.id} to={`/location/${i.id}`}>
-              <motion.div
-                className="item-location"
-                variants={itemsVariants}
-                initial="hidden"
-                animate="visible"
-                custom={index}>
-                <ItemLocation items={i} />
-              </motion.div>
-            </Link>
-          ),
-        )
-      ) : randomItems.length === 1 ? (
-        <div>К сожаление нет информации</div>
-      ) : (
-        randomItems
-          .map((i, index) =>
-            i.route_type ? null : (
+          i.route_type || i.subtype == 'city' ? null : (
+            <div style={{ width: windowWidth < 1200 ? '100%' : null }}>
               <Link key={i.id} to={`/location/${i.id}`}>
                 <motion.div
                   className="item-location"
@@ -88,8 +87,29 @@ export const Locations = () => {
                   <ItemLocation items={i} />
                 </motion.div>
               </Link>
-            ),
-          )
+            </div>
+          ),
+        )
+      ) : randomItems.length === 1 ? (
+        <div>К сожалению нет информации</div>
+      ) : (
+        filterRandomItems
+          .map((i, index) => (
+            <Link
+              style={randomItems.length === 0 ? { width: '100%' } : { width: '30%' }}
+              className="link-wrapper"
+              key={i.id}
+              to={`/location/${i.id}`}>
+              <motion.div
+                className="item-location"
+                variants={itemsVariants}
+                initial="hidden"
+                animate="visible"
+                custom={index}>
+                <ItemLocation items={i} />
+              </motion.div>
+            </Link>
+          ))
           .sort(() => Math.random() - 0.5)
           .slice(0, 1)
       )}

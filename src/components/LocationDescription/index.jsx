@@ -10,6 +10,20 @@ import Reviews from '../Reviews/index';
 import FormReview from '../FormReview';
 
 export const LocationDescription = () => {
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const [location, setLocation] = React.useState();
   const { id } = useParams();
   const attributes = location?.[0]?.attribute_groups;
@@ -102,9 +116,10 @@ export const LocationDescription = () => {
         <div className={styles.RightInfo}>
           <YMaps>
             <Map
+              // style={windowWidth < 1200 ? { marginTop: '20px' } : null}
               defaultState={{ center: [location[0].point.lat, location[0].point.lon], zoom: 15 }}
-              width="50vw"
-              height="100vh">
+              width={windowWidth < 1200 ? '100%' : '50vw'}
+              height={windowWidth < 1200 ? '50vh' : '100vh'}>
               <Placemark defaultGeometry={[location[0].point.lat, location[0].point.lon]} />
             </Map>
           </YMaps>

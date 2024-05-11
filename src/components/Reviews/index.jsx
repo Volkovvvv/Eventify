@@ -26,7 +26,7 @@ export const Reviews = () => {
   return (
     <div className={styles.reviews}>
       <div className={styles.reviewsHeader}>
-        <span>Отзывы: 2</span>
+        <span>Отзывы: {reviewsArray ? reviewsArray.length : 0}</span>
       </div>
       {reviewsArray ? (
         reviewsArray.map((item, i) => {

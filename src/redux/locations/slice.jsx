@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { random } from 'gsap';
 
 const initialState = {
   items: [],

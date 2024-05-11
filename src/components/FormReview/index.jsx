@@ -73,6 +73,20 @@ export const FormReview = () => {
     }
   };
 
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className={styles.setReview}>
       <div className={styles.setReviewWrapper}>
@@ -81,7 +95,11 @@ export const FormReview = () => {
             Поделиться
             <br /> мнением
           </span>
-          <Rating initialValue={rating} onClick={(rate) => onRating(rate)} size="40px" />
+          <Rating
+            initialValue={rating}
+            onClick={(rate) => onRating(rate)}
+            size={windowWidth > 450 ? '40px' : windowWidth < 390 ? '23px' : '30px'}
+          />
         </div>
         <div className={styles.setReviewWrapperText}>
           <input

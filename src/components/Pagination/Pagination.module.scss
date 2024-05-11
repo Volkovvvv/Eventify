@@ -18,6 +18,9 @@
     border-radius: 6px;
     color: #bdbdbd;
     cursor: pointer;
+    &:last-child {
+      margin-right: 0;
+    }
     &:hover {
       transition: 0.2s;
       background-color: #185bc3;
@@ -38,4 +41,40 @@
   background-color: #185bc3;
   border: none;
   color: #fff;
+}
+@media screen and (max-width: 600px) {
+  .pagination {
+    padding-bottom: 50px;
+    margin-top: 15px;
+    &Item {
+      width: 60px;
+      padding: 15px 0px;
+    }
+  }
+}
+@media screen and (max-width: 550px) {
+  .pagination {
+    &Item {
+      margin-right: 8px;
+      width: 50px;
+      padding: 12px 0px;
+    }
+  }
+}
+@media screen and (max-width: 420px) {
+  .pagination {
+    &Item {
+      margin-right: 5px;
+      width: 45px;
+      padding: 10px 0px;
+    }
+  }
+}
+@media screen and (max-width: 365px) {
+  .pagination {
+    &Item {
+      width: 40px;
+      padding: 8px 0px;
+    }
+  }
 }

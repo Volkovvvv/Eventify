@@ -30,7 +30,7 @@
     &Container {
       text-align: center;
       & h2 {
-        font-size: 1.3vw;
+        font-size: 30px;
         color: #fff;
         margin-top: 15px;
 
@@ -88,7 +88,6 @@
     font-size: 0.7vw;
     font-weight: 400;
   }
-
   & .description {
     margin-top: 20px;
     background: #fff;
@@ -142,6 +141,288 @@
         & span {
           color: rgb(250, 103, 103);
           cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 2200px) {
+  .container {
+    & .main {
+      &Container {
+        &Descr {
+          & button {
+            & span {
+              font-size: 0.7vw;
+            }
+          }
+        }
+      }
+    }
+    & .favorites {
+      font-size: 0.8vw;
+    }
+    & .description {
+      &Info {
+        &Right {
+          & span {
+            font-size: 0.7vw;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1850px) {
+  .container {
+    & .main {
+      & h2 {
+        font-size: 25px;
+      }
+      &Container {
+        &Descr {
+          & button {
+            & span {
+              font-size: 0.8vw;
+            }
+          }
+        }
+      }
+    }
+    & .favorites {
+      font-size: 0.9vw;
+    }
+    & .description {
+      &Info {
+        &Right {
+          & span {
+            font-size: 0.8vw;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1540px) {
+  .container {
+    & .main {
+      &Container {
+        &Descr {
+          & button {
+            & span {
+              font-size: 1vw;
+            }
+          }
+        }
+      }
+    }
+    & .favorites {
+      font-size: 1.1vw;
+    }
+    & .description {
+      &Info {
+        &Right {
+          & span {
+            font-size: 1vw;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1320px) {
+  .container {
+    & .main {
+      &Container {
+        &Descr {
+          & button {
+            & span {
+              font-size: 1.1vw;
+            }
+          }
+        }
+      }
+    }
+    & .favorites {
+      font-size: 1.2vw;
+    }
+    & .description {
+      &Info {
+        &Right {
+          & span {
+            font-size: 1.1vw;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1320px) {
+  .container {
+    & .main {
+      &Container {
+        &Descr {
+          & button {
+            & span {
+              font-size: 1.1vw;
+            }
+          }
+        }
+      }
+    }
+    & .favorites {
+      font-size: 1.2vw;
+    }
+    & .description {
+      &Info {
+        &Right {
+          & span {
+            font-size: 1.1vw;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .container {
+    & .wrapper {
+      display: block;
+      width: 100%;
+      & .leftInfo {
+        width: 100%;
+      }
+    }
+    & .main {
+      width: 100%;
+      &Container {
+        &Descr {
+          & button {
+            & span {
+              font-size: 1.5vw;
+            }
+          }
+        }
+      }
+    }
+    & .favorites {
+      font-size: 1.4vw;
+    }
+    & .description {
+      width: 100%;
+      &Info {
+        &Right {
+          & span {
+            font-size: 1.4vw;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .container {
+    & .main {
+      &Container {
+        &Descr {
+          & button {
+            & span {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+    & .favorites {
+      font-size: 18px;
+    }
+    & .description {
+      width: 100%;
+      &Info {
+        &Right {
+          & span {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+  .RightInfo {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .container {
+    & .main {
+      &Container {
+        &Descr {
+          & button {
+            padding: 10px;
+            & span {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 445px) {
+  .container {
+    & .main {
+      &Container {
+        &Descr {
+          & button {
+            & span {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 420px) {
+  .container {
+    & .main {
+      &Container {
+        &Descr {
+          & button {
+            & span {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 420px) {
+  .container {
+    & .main {
+      &Container {
+        &Descr {
+          & button {
+            & span {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 340px) {
+  .container {
+    & .main {
+      &Container {
+        &Descr {
+          & button {
+            & span {
+              font-size: 9px;
+            }
+          }
         }
       }
     }

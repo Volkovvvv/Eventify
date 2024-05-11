@@ -9,7 +9,9 @@ export const Search = () => {
   const [localValue, setLocalValue] = React.useState();
 
   const searchValue = useSelector((state) => state.locations.search);
+  const randomItem = useSelector((state) => state.locations.randomItems);
   const dispatch = useDispatch();
+  console.log(randomItem, 'рандом айтем');
 
   const update = React.useCallback(
     debounce((str) => {
@@ -26,7 +28,7 @@ export const Search = () => {
     dispatch(setItemsSearch(''));
     setLocalValue('');
   };
-  return (
+  return randomItem.length === 0 ? (
     <div className={style.search}>
       <img src={SearchIcon} alt="" />
       <input
@@ -47,7 +49,7 @@ export const Search = () => {
         </svg>
       ) : null}
     </div>
-  );
+  ) : null;
 };
 
 export default Search;

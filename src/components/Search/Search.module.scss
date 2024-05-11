@@ -1,5 +1,5 @@
 .search {
-  width: 65%;
+  width: 70%;
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -49,5 +49,11 @@
     &:focus {
       border: 1px solid #9b9b9b;
     }
+  }
+}
+
+@media screen and (max-width: 2000px) {
+  .search {
+    width: 95%;
   }
 }

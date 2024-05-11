@@ -5,6 +5,7 @@ import Star from '../../assets/img/Star.png';
 import style from './ItemLocation.module.scss';
 
 export const ItemLocation = ({ items }) => {
+  const randomNumber = Math.floor(Math.random() * 91) + 10;
   return (
     <div className={style.locations}>
       <div className={style.locationsItem}>
@@ -20,7 +21,7 @@ export const ItemLocation = ({ items }) => {
         <div className={style.locationsItemTop}>
           <div className={style.locationsItemMoney}>
             <img src={Coin} alt="" />
-            <span>25р</span>
+            <span>{randomNumber}р</span>
           </div>
           <div className={style.locationsItemRating}>
             <div className={style.locationsItemStar}>
@@ -31,7 +32,7 @@ export const ItemLocation = ({ items }) => {
                 {items.reviews.general_rating ? (
                   items.reviews.general_rating
                 ) : (
-                  <span className={style.noRating}>Нет оценок</span>
+                  <span className={style.noRating}>Нет</span>
                 )}
               </span>
               <p>

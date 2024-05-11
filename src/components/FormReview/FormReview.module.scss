@@ -2,7 +2,7 @@
   background-color: #1b8dfb;
   width: 90%;
   border-radius: 5px;
-  margin-top: 20px;
+  margin: 20px 0;
   padding: 30px;
   &Wrapper {
     &Top {
@@ -37,5 +37,26 @@
     margin-top: 20px;
     padding: 10px 20px;
     cursor: pointer;
+  }
+}
+@media screen and (max-width: 2200px) {
+  .setReviewWrapperTop {
+    & span {
+      font-size: 20px;
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .setReview {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 340px) {
+  .setReviewWrapperTop {
+    display: block;
+    & span {
+      margin-right: 15px;
+      margin-top: 3px;
+    }
   }
 }
