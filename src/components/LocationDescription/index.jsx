@@ -61,6 +61,7 @@ export const LocationDescription = () => {
             <div className={styles.mainContainer}>
               <img src={location[0].attribute_groups[0].icon__url} alt="" />
               <h2>{location[0].name}</h2>
+
               <div className={styles.mainContainerDescr}>
                 <button>
                   <img src={Location} alt="" />

@@ -6,10 +6,13 @@
 .leftContent {
   width: 60%;
 }
-
+.logoLogin {
+  width: 590px;
+}
 .logo {
-  padding: 0.5% 0 0 3%;
+  padding: 2% 0 0 3%;
   position: relative;
+
   &Text {
     position: relative;
     &::before {
@@ -22,8 +25,10 @@
       height: 8vh;
       position: absolute;
       cursor: pointer;
-      left: 8.4vw;
-      top: -6.5vh;
+      // left: 9.3vw;
+      // top: -4vh;
+      left: 220px;
+      bottom: -30px;
     }
   }
 }
@@ -75,10 +80,27 @@
     width: 70%;
     margin-top: 5vh;
     margin: 0 auto;
+    position: relative;
     cursor: pointer;
     height: 5vh;
     border-radius: 50px;
     display: block;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 5vh;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50px;
+      transition: all 1s ease;
+    }
+    &:hover {
+      &:before {
+        width: 100%;
+      }
+    }
     & span {
       color: #fff;
       font-family: 'Montserrat', sans-serif;
@@ -102,5 +124,187 @@
   & span {
     color: #828282;
     font-size: 0.6vw;
+  }
+}
+
+@media screen and (max-width: 2150px) {
+  .mainInfo {
+    & h2 {
+      font-size: 30px;
+    }
+    & p {
+      font-size: 18px;
+    }
+  }
+  .rightContent {
+    &Top {
+      & h3 {
+        font-size: 30px;
+      }
+    }
+    & button {
+      & span {
+        font-size: 18px;
+      }
+    }
+  }
+  .buttons {
+    & span {
+      font-size: 16px;
+    }
+  }
+}
+@media screen and (max-width: 1400px) {
+  .logo {
+    &Text {
+      &::before {
+        width: 65px;
+        height: 65px;
+        left: 165px;
+      }
+    }
+  }
+  .logoLogin {
+    width: 450px;
+  }
+  .mainInfo {
+    & h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    & p {
+      font-size: 20px;
+    }
+  }
+  .rightContent {
+    & button {
+      & span {
+        font-size: 15px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1100px) {
+  .logo {
+    &Text {
+      &::before {
+        width: 60px;
+        height: 60px;
+        left: 145px;
+      }
+    }
+  }
+  .logoLogin {
+    width: 400px;
+  }
+  .mainInfo {
+    & h2 {
+      font-size: 25px;
+    }
+    & p {
+      font-size: 18px;
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  .mainInfo {
+    & h2 {
+      font-size: 30px;
+    }
+    & p {
+      font-size: 20px;
+      padding-bottom: 40px;
+    }
+  }
+  .body {
+    display: block;
+  }
+  .leftContent {
+    margin: 0 auto;
+  }
+  .logo {
+    padding-top: 30px;
+  }
+  .logoLogin {
+    width: 400px;
+  }
+  .astronaut {
+    width: 40vw;
+  }
+  .rightContent {
+    height: 45%;
+    width: 100%;
+    padding-top: 30px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff;
+    text-align: center;
+    &Wrapper {
+      margin-top: 0;
+    }
+  }
+}
+@media screen and (max-width: 700px) {
+  .astronaut {
+    height: 35vh;
+  }
+  .logo {
+    text-align: center;
+    &Text {
+      &::before {
+        width: 45px;
+
+        left: 110px;
+        bottom: -35px;
+      }
+    }
+  }
+  .logoLogin {
+    width: 300px;
+  }
+  .mainInfo {
+    & h2 {
+      font-size: 20px;
+    }
+    & p {
+      font-size: 15px;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .logo {
+    transform: translateX(-20px);
+  }
+}
+@media screen and (max-width: 450px) {
+  .logo {
+    transform: translateX(-30px);
+  }
+}
+@media screen and (max-width: 410px) {
+  .logo {
+    transform: translateX(-40px);
+  }
+  .astronaut {
+    height: 30vh;
+  }
+}
+@media screen and (max-width: 370px) {
+  .logo {
+    transform: translateX(-50px);
+  }
+}
+@media screen and (max-width: 360px) {
+  .logoLogin {
+    width: 250px;
+    transform: translateX(15px);
+  }
+  .logo {
+    &Text {
+      &::before {
+        width: 35px;
+        left: 105px;
+        bottom: -38px;
+      }
+    }
   }
 }

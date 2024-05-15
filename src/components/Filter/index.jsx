@@ -188,6 +188,8 @@ export const Filter = () => {
   const searchValue = useSelector((state) => state.locations.search);
   const upperSearchValue = searchValue.charAt(0).toUpperCase() + searchValue.slice(1);
 
+  // const myRef = useRef(null);
+
   const showDropdownRating = () => {
     setActiveRating(!activeRating);
   };

@@ -28,11 +28,11 @@
         color: #939394;
         text-align: center;
         margin-bottom: 1vh;
-        font-size: 1vw;
+        font-size: 22px;
       }
       & p {
         text-align: center;
-        font-size: 0.6vw;
+        font-size: 14px;
         margin-bottom: 1.5vh;
       }
       &-categories {
@@ -74,5 +74,100 @@
   &:hover {
     background: #185bc3;
     color: #fff;
+  }
+}
+@media screen and (max-width: 2000px) {
+  .modal {
+    &-wrapper {
+      width: 500px;
+      height: 330px;
+      &__content {
+        &-categories {
+          & button {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+  .btn-chose {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .modal {
+    &-wrapper {
+      width: 500px;
+      height: 330px;
+      padding-top: 20px;
+      &__content {
+        & p {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 570px) {
+  .modal {
+    &-wrapper {
+      padding: 10px 20px;
+      width: 400px;
+      height: 370px;
+      &__content {
+        &-categories {
+          & button {
+            font-size: 11px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 470px) {
+  .modal {
+    &-wrapper {
+      padding: 10px 20px;
+      width: 340px;
+      height: 420px;
+      &__content {
+        &-categories {
+          & button {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .modal {
+    &-wrapper {
+      width: 300px;
+
+      &__content {
+        &-categories {
+          & button {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 350px) {
+  .modal {
+    &-wrapper {
+      width: 270px;
+      height: 390px;
+
+      &__content {
+        &-categories {
+          & button {
+            font-size: 12px;
+          }
+        }
+      }
+    }
   }
 }

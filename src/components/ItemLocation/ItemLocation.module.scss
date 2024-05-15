@@ -1,6 +1,13 @@
 .locations {
   cursor: pointer;
   &Item {
+    &:hover {
+      .locationsItemAnimation {
+        display: block;
+        top: 50%;
+        opacity: 1;
+      }
+    }
     margin-bottom: 20px;
     position: relative;
     background-size: cover;
@@ -14,10 +21,16 @@
       top: 0;
       left: 0;
       width: 100%;
+
       height: 100%;
       background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.7));
-      z-index: 1; /* Отображаем градиент над картинкой */
+      z-index: 1;
       border-radius: 15px;
+    }
+    &:hover::before {
+      z-index: 2;
+      backdrop-filter: blur(3px);
+      background-image: linear-gradient(rgba(0, 0, 0, 0.021), rgba(0, 0, 0, 0.925));
     }
     &Img {
       width: 100%;
@@ -85,6 +98,21 @@
         color: #fff;
       }
     }
+    &Animation {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 17%;
+      transform: translateY(-50%);
+      // transform: translateX(-50%);
+      color: #fff;
+      font-weight: 600;
+      width: 100%;
+      font-size: 35px;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.5s, top 0.5s;
+    }
   }
 }
 .noRating {
@@ -94,6 +122,17 @@
 }
 
 @media screen and (max-width: 1200px) {
+  .locations {
+    cursor: pointer;
+    &Item {
+      &:hover {
+        .locationsItemAnimation {
+          display: none;
+        }
+      }
+    }
+  }
+
   .locations {
     &Item {
       width: 100%;

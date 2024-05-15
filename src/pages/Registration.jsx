@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../scss/components/pages/Registration.module.scss';
-import Logo from '../assets/img/Logo';
+import Logo from '../assets/img/LogoReg';
 import Astronaut from '../assets/img/Astronaut';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';

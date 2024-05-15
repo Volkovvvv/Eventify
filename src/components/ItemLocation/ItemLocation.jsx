@@ -9,11 +9,12 @@ export const ItemLocation = ({ items }) => {
   return (
     <div className={style.locations}>
       <div className={style.locationsItem}>
+        <p className={style.locationsItemAnimation}>Перейти подробнее</p>
         {items.external_content[0] ? (
           <img
             className={style.locationsItemImg}
             src={items.external_content[0].main_photo_url}
-            alt="фото локации"
+            alt="К сожалению, фотография недоступна"
           />
         ) : (
           <img width="500" height="300" src={MinskView}></img>
@@ -43,7 +44,7 @@ export const ItemLocation = ({ items }) => {
         </div>
         <div className={style.locationsItemInfo}>
           <h3>{items.name}</h3>
-          <p>{items.address_name}</p>
+          <p>{items.address_name}</p>{' '}
         </div>
       </div>
     </div>

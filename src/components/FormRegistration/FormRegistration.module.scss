@@ -102,3 +102,66 @@
     font-size: 0.7vw;
   }
 }
+@media screen and (max-width: 2150px) {
+  .rightContentForm {
+    & div {
+      & input {
+        font-size: 1vw;
+        padding-left: 45px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1400px) {
+  .rightContentForm {
+    & div {
+      & input {
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .rightContentForm {
+    & div {
+      &:last-child {
+        &::before {
+          content: '';
+          left: 1vw;
+          width: 25px;
+        }
+      }
+      &:nth-child(3) {
+        &::before {
+          content: '';
+          left: 1vw;
+          width: 25px;
+        }
+      }
+      &:nth-child(1) {
+        &::before {
+          content: '';
+          left: 1vw;
+          width: 25px;
+        }
+      }
+      &:nth-child(2) {
+        &::before {
+          content: '';
+          left: 1vw;
+          width: 25px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .rightContentForm {
+    & div {
+      & input {
+        padding-left: 35px;
+      }
+    }
+  }
+}
