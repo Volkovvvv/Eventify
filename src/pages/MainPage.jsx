@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../scss/components/pages/MainPage.module.scss';
+import styles from '../scss/components/pages/MyPage.module.scss';
 import { Header } from '../components/Header';
 import MinskView from '../components/MinskView';
 import Filter from '../components/Filter';
