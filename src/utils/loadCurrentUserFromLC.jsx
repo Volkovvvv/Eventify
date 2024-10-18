@@ -1,5 +1,3 @@
-import React from 'react';
-
 const loadCurrentUserFromLC = () => {
   try {
     const currentUser = sessionStorage.getItem('currentUser');

@@ -1,4 +1,3 @@
-import React from 'react';
 import Home from './pages/Home';
 import './scss/components/app.scss';
 import { Routes, Route } from 'react-router-dom';
@@ -7,7 +6,6 @@ import LocationPage from './pages/LocationPage';
 import Registration from './pages/Registration';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
-import Modal from './components/Modal';
 
 function App() {
   return (

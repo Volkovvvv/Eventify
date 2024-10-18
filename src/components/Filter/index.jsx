@@ -17,8 +17,6 @@ export const Filter = () => {
   const [activeMetro, setActiveMetro] = React.useState(false);
   const [activeMetroBlue, setActiveMetroBlue] = React.useState(false);
   const [activeMetroRed, setActiveMetroRed] = React.useState(false);
-  const [checkedDecrease, setCheckedDecrease] = React.useState('');
-  const [checkedIncrease, setCheckedIncrease] = React.useState('');
   const [metroBlueList, setMetroBlueList] = React.useState([
     {
       name: 'Малиновка',
