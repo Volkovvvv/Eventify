@@ -27,6 +27,7 @@ import { motion } from 'framer-motion';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import Hamburger from 'hamburger-react';
+import HeaderButtons from './Button';
 
 export const Header = () => {
   const [isOpen, setOpen] = useState(false);
@@ -37,69 +38,17 @@ export const Header = () => {
     hover: { scale: 1.05, transition: { duration: 0.3 } },
   };
 
-  const onClickEat = () => {
-    dispath(setItemsSearch('рестораны'));
-    dispath(setItemsActivity('Покушать'));
+  const onClickAction = (place, action) => {
+    console.log('действие');
+    dispath(setItemsSearch(place));
+    dispath(setItemsActivity(action));
     dispath(setCurrentPage(1));
     dispath(setRandomSearch(''));
     dispath(setRandomItem([]));
     dispath(setFilterSubwayName(''));
     dispath(setFilterSubway(''));
   };
-  const onClickCinema = () => {
-    dispath(setItemsSearch('кинотеатры'));
-    dispath(setItemsActivity('Кино'));
-    dispath(setCurrentPage(1));
-    dispath(setRandomSearch(''));
-    dispath(setRandomItem([]));
-    dispath(setFilterSubwayName(''));
-    dispath(setFilterSubway(''));
-  };
-  const onClickBowling = () => {
-    dispath(setItemsSearch('боулинг'));
-    dispath(setItemsActivity('Боулинг'));
-    dispath(setCurrentPage(1));
-    dispath(setRandomSearch(''));
-    dispath(setRandomItem([]));
-    dispath(setFilterSubwayName(''));
-    dispath(setFilterSubway(''));
-  };
-  const onClickSport = () => {
-    dispath(setItemsSearch('спортзалы'));
-    dispath(setItemsActivity('Спорт'));
-    dispath(setCurrentPage(1));
-    dispath(setRandomSearch(''));
-    dispath(setRandomItem([]));
-    dispath(setFilterSubwayName(''));
-    dispath(setFilterSubway(''));
-  };
-  const onClickSauna = () => {
-    dispath(setItemsSearch('сауны'));
-    dispath(setItemsActivity('Сауны'));
-    dispath(setCurrentPage(1));
-    dispath(setRandomSearch(''));
-    dispath(setRandomItem([]));
-    dispath(setFilterSubwayName(''));
-    dispath(setFilterSubway(''));
-  };
-  const onClickAlco = () => {
-    dispath(setItemsSearch('бары'));
-    dispath(setItemsActivity('Бары'));
-    dispath(setCurrentPage(1));
-    dispath(setRandomSearch(''));
-    dispath(setRandomItem([]));
-    dispath(setFilterSubwayName(''));
-    dispath(setFilterSubway(''));
-  };
-  const onClickSmoke = () => {
-    dispath(setItemsSearch('кафе с кальяном'));
-    dispath(setItemsActivity('Кальянные'));
-    dispath(setCurrentPage(1));
-    dispath(setRandomSearch(''));
-    dispath(setRandomItem([]));
-    dispath(setFilterSubwayName(''));
-    dispath(setFilterSubway(''));
-  };
+
   const clearData = () => {
     sessionStorage.removeItem('currentUser');
   };
@@ -133,66 +82,7 @@ export const Header = () => {
             <div className={styles.hamburgerMenuWrapper}>
               <div className={styles.hamburgerMenuElements}>
                 {' '}
-                <motion.button
-                  className={styles.headerButton}
-                  whileHover="hover"
-                  variants={variants}>
-                  <Burgersvg />
-                  <span onClick={onClickEat}>Покушать</span>
-                </motion.button>
-                <motion.button
-                  className={styles.headerButton}
-                  whileHover="hover"
-                  variants={variants}>
-                  <Cinema />
-                  <span onClick={onClickCinema}>Кинотеатры</span>
-                </motion.button>
-                <motion.button
-                  className={styles.headerButton}
-                  whileHover="hover"
-                  variants={variants}>
-                  <Bowling />
-                  <span onClick={onClickBowling}>Боулинг</span>
-                </motion.button>
-                <motion.button
-                  className={styles.headerButton}
-                  whileHover="hover"
-                  variants={variants}>
-                  <Sport />
-                  <span onClick={onClickSport}>Спорт</span>
-                </motion.button>
-                <motion.button
-                  className={styles.headerButton + ' ' + styles.eat}
-                  whileHover="hover"
-                  variants={variants}>
-                  <Sauna />
-                  <span onClick={onClickSauna}>Сауны</span>
-                </motion.button>
-                <motion.button
-                  className={styles.headerButton + ' ' + styles.eat}
-                  whileHover="hover"
-                  variants={variants}>
-                  <Leisure />
-                  <span>
-                    Активный
-                    <br />
-                    отдых
-                  </span>
-                </motion.button>
-                <motion.button
-                  className={styles.headerButton + ' ' + styles.eat}
-                  whileHover="hover"
-                  variants={variants}>
-                  <Alco />
-                  <span onClick={onClickAlco}>Выпить</span>
-                </motion.button>
-                <motion.button
-                  className={styles.headerButton + ' ' + styles.eat}
-                  whileHover="hover"
-                  variants={variants}>
-                  <Hookah />
-                  <span onClick={onClickSmoke}>Кальянные</span>
-                </motion.button>
+                <HeaderButtons />
               </div>
               {windowWidth < 670 ? (
                 <div>
@@ -226,79 +116,74 @@ export const Header = () => {
                 <Slide className={styles.slide} index={0}>
                   {' '}
                   <motion.button
+                    onClick={() => onClickAction('рестораны', 'Покушать')}
                     className={styles.headerButton}
                     whileHover="hover"
                     variants={variants}>
                     <Burgersvg />
-                    <span onClick={onClickEat}>Покушать</span>
+                    <span>Покушать</span>
                   </motion.button>
                 </Slide>
                 <Slide index={1}>
                   {' '}
                   <motion.button
+                    onClick={() => onClickAction('рестораны', 'Покушать')}
                     className={styles.headerButton}
                     whileHover="hover"
                     variants={variants}>
                     <Cinema />
-                    <span onClick={onClickCinema}>Кинотеатры</span>
+                    <span>Кинотеатры</span>
                   </motion.button>
                 </Slide>
                 <Slide index={2}>
                   <motion.button
+                    onClick={() => onClickAction('боулинг', 'Боулинг')}
                     className={styles.headerButton}
                     whileHover="hover"
                     variants={variants}>
                     <Bowling />
-                    <span onClick={onClickBowling}>Боулинг</span>
+                    <span>Боулинг</span>
                   </motion.button>
                 </Slide>
                 <Slide index={3}>
                   <motion.button
+                    onClick={() => onClickAction('спортзалы', 'спорт')}
                     className={styles.headerButton}
                     whileHover="hover"
                     variants={variants}>
                     <Sport />
-                    <span onClick={onClickSport}>Спорт</span>
+                    <span>Спорт</span>
                   </motion.button>
                 </Slide>
                 <Slide index={4}>
                   <motion.button
+                    onClick={() => onClickAction('сауны', 'Cауны')}
                     className={styles.headerButton + ' ' + styles.eat}
                     whileHover="hover"
                     variants={variants}>
                     <Sauna />
-                    <span onClick={onClickSauna}>Сауны</span>
+                    <span>Сауны</span>
                   </motion.button>
                 </Slide>
+
                 <Slide index={5}>
                   <motion.button
-                    className={styles.headerButton + ' ' + styles.eat}
-                    whileHover="hover"
-                    variants={variants}>
-                    <Leisure />
-                    <span>
-                      Активный
-                      <br />
-                      отдых
-                    </span>
-                  </motion.button>
-                </Slide>
-                <Slide index={6}>
-                  <motion.button
+                    onClick={() => onClickAction('бары', 'Бары')}
                     className={styles.headerButton + ' ' + styles.eat}
                     whileHover="hover"
                     variants={variants}>
                     <Alco />
-                    <span onClick={onClickAlco}>Выпить</span>
+                    <span>Выпить</span>
                   </motion.button>
                 </Slide>
-                <Slide index={7}>
+                <Slide index={6}>
                   <motion.button
+                    onClick={() => onClickAction('кафе с кальяном', 'Кальянные')}
                     className={styles.headerButton + ' ' + styles.eat}
                     whileHover="hover"
                     variants={variants}>
                     <Hookah />
-                    <span onClick={onClickSmoke}>Кальянные</span>
+                    <span>Кальянные</span>
                   </motion.button>
                 </Slide>
               </Slider>
@@ -310,56 +195,7 @@ export const Header = () => {
               </ButtonNext>
             </CarouselProvider>
           ) : (
-            <>
-              <motion.button className={styles.headerButton} whileHover="hover" variants={variants}>
-                <Burgersvg />
-                <span onClick={onClickEat}>Покушать</span>
-              </motion.button>
-              <motion.button className={styles.headerButton} whileHover="hover" variants={variants}>
-                <Cinema />
-                <span onClick={onClickCinema}>Кинотеатры</span>
-              </motion.button>
-              <motion.button className={styles.headerButton} whileHover="hover" variants={variants}>
-                <Bowling />
-                <span onClick={onClickBowling}>Боулинг</span>
-              </motion.button>
-              <motion.button className={styles.headerButton} whileHover="hover" variants={variants}>
-                <Sport />
-                <span onClick={onClickSport}>Спорт</span>
-              </motion.button>
-              <motion.button
-                className={styles.headerButton + ' ' + styles.eat}
-                whileHover="hover"
-                variants={variants}>
-                <Sauna />
-                <span onClick={onClickSauna}>Сауны</span>
-              </motion.button>
-              <motion.button
-                className={styles.headerButton + ' ' + styles.eat}
-                whileHover="hover"
-                variants={variants}>
-                <Leisure />
-                <span>
-                  Активный
-                  <br />
-                  отдых
-                </span>
-              </motion.button>
-              <motion.button
-                className={styles.headerButton + ' ' + styles.eat}
-                whileHover="hover"
-                variants={variants}>
-                <Alco />
-                <span onClick={onClickAlco}>Выпить</span>
-              </motion.button>
-              <motion.button
-                className={styles.headerButton + ' ' + styles.eat}
-                whileHover="hover"
-                variants={variants}>
-                <Hookah />
-                <span onClick={onClickSmoke}>Кальянные</span>
-              </motion.button>
-            </>
+            <HeaderButtons />
           )}
         </div>
         <div className={styles.headerAccount}>

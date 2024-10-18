@@ -39,7 +39,7 @@ export const Locations = () => {
         const response = await axios.get(
           `https://catalog.api.2gis.com/3.0/items?q=${
             random ? randomMinsk : search
-          }&page=${currentPage}&page_size=9&sort_point=${coordinates}&subway=${subwayLocation}&fields=filters,items.external_content,items.links,food_service_average_check,items.attribute_groups,items.context,items.description,items.schedule,items.comment,items.reviews,items.rubrics,items.flags,items.delivery,rating&key=d573e674-d968-4dc3-b587-0fdf84108197`,
+          }&page=${currentPage}&page_size=9&sort_point=${coordinates}&subway=${subwayLocation}&fields=filters,items.external_content,items.links,food_service_average_check,items.attribute_groups,items.context,items.description,items.schedule,items.comment,items.reviews,items.rubrics,items.flags,items.delivery,rating&key=ab172678-5dc2-4b42-8dee-37e52e7af50f`,
         );
         console.log(random, 'значение рандом');
         !random

@@ -31,7 +31,9 @@ export const Registration = () => {
           navigate('/login');
         });
       })
-      .catch(console.error);
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   return (
