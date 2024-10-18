@@ -1,6 +1,3 @@
-import React from 'react';
-import styles from '../../scss/components/pages/mainPage.module.scss';
-
 const Burgersvg = () => {
   return (
     <svg

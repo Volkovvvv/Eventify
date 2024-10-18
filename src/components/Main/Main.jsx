@@ -13,7 +13,6 @@ export const Locations = () => {
   const dispatch = useDispatch();
   const locationItems = useSelector((state) => state.locations.items);
   const randomItems = useSelector((state) => state.locations.randomItems);
-  console.log(randomItems);
   const searchName = useSelector((state) => state.locations.search);
   const search = `минск ${searchName}`;
   const currentPage = useSelector((state) => state.pagination.currentPage);
